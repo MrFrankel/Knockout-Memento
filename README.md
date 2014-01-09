@@ -20,7 +20,7 @@ testSub(150);
 
 newStack.triggerUndo(); //testSub() === 100
 newStack.triggerUndo(); //testSub() === 50
-newStack.triggerRedo(); //testSub() === 150
+newStack.triggerRedo(); //testSub() === 100
 ```
 
 ##Multiple observables, one stack
