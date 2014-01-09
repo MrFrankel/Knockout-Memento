@@ -133,72 +133,72 @@ newStack3.triggerUndo() //testSub3() === "Lia"
     * returns the array of stacks
     * @returns {Array}
     */
-    ko.mcf.getMStacks
+    ko.mcf.getMStacks()
 
     /**
      * Cleares all stacks in the system
      */
-    ko.mcf.purgeMStacks
+    ko.mcf.purgeMStacks()
 
     /**
      * Creates a new stack and returns it
      * @param options set of stack options
      * @returns {ko.msf.mStack}
      */
-    ko.mcf.createNewMStack
+    ko.mcf.createNewMStack()
 
     /**
      * Destroys a given stack
      * @param stack
      * @returns {boolean}
      */
-    ko.mcf.killMStack
+    ko.mcf.killMStack()
 
     /**
      * Returns the first stack in the list, createts one if non have been created before
      * @returns {ko.msf.ms}
      */
-    ko.mcf.getDefaultStack
+    ko.mcf.getDefaultStack()
 
     /**
      * Returns the first stack in the list, createts one if non have been created before
      * @returns {ko.msf.ms}
      */
-    ko.msf.mStack
+    ko.msf.mStack()
 
 
     /**
     * Clears stack for gc
     **/
-    ko.msf.mStack.clearForGc
+    ko.msf.mStack.clearForGc()
 
     /**
     * re initializes the stack
     **/
-    ko.msf.mStack.reInit
+    ko.msf.mStack.reInit()
 
     /**
     * Weather or not the stack is currently triggering a memento
     * @returns {boolean}
      */
-     ko.msf.mStack.isUpdating
+     ko.msf.mStack.isUpdating()
 
      /**
      * Stop listening to changes
      **/
-     ko.msf.mStack.stopListening
+     ko.msf.mStack.stopListening()
 
      /**
      * Resume listening to changes
      **/
-     ko.msf.mStack.resumeListening
+     ko.msf.mStack.resumeListening()
 
      /**
      * Let's a caller subscribe a call back function before any mementos are triggered
      * @param cb
      * @returns {{}} dispose object
      */
-     ko.msf.mStack.subscribeTo
+     ko.msf.mStack.subscribeTo()
 
      /**
      * Handler for external calls to stack, creates mementos and stacks them to undo
@@ -206,27 +206,27 @@ newStack3.triggerUndo() //testSub3() === "Lia"
      *@param subject The observable that has changed
      *@param val The previous value of the observable
      **/
-     ko.msf.mStack.stackChange
+     ko.msf.mStack.stackChange()
 
      /**
      * Trigger an undo
      **/
-     ko.msf.mStack.triggerUndo
+     ko.msf.mStack.triggerUndo()
 
      /**
      * Trigger a redo
      **/
-     ko.msf.mStack.triggerRedo
+     ko.msf.mStack.triggerRedo()
 
      /**
      * When this function is called, all following actions will be triggered as a single undo, Don't forget to stopSequencing!!!
     **/
-    ko.msf.mStack.startSequencing
+    ko.msf.mStack.startSequencing()
 
     /**
     * When this function is called, all actions that have been buffers in the sequence will be pushed to undo
     **/
-    ko.msf.mStack.stopSequencing
+    ko.msf.mStack.stopSequencing()
 ```
 
 ##Demo
