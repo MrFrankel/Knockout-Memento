@@ -21,8 +21,9 @@ ko.extenders.registerToMS = function (target, options) {
         },
         //stored in a temporary spot until commit
         write: function (newValue) {
-            if (!result.dontReg)
+            if (!result.dontReg) {
                 result.registerCurrentValue();
+            }
             target(newValue);
         }
     });
