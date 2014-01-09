@@ -1,120 +1,233 @@
-#knockout-amd-helpers
+#knockout-memento
 
-##What is the point of this library?
+##Wait a memento, what does it do??
 
-This plugin is designed to be a lightweight and flexible solution to working with AMD modules in Knockout.js. It provides two key features:
+knockout-memento is a library enabling developers to maintain stack of all changes made to kncokout observables in the system,
+Basically it gives you the ability to create memento stacks which you can then register a certain observable to, this stack will maintain the previous states of these observables.
+These states can then be reinstated by triggering undo/redo on any given stack.
 
-1- Augments the default template engine to allow it to load **external templates** using the AMD loader's text plugin. This lets you create your templates in individual HTML files and pull them in as needed by name (ideally in production the templates are included in your optimized file).
 
-2- Creates a `module` binding that provides a flexible way to load data from an AMD module and either bind it against a template or against an anonymous/inline template.
 
-##template engine
+##Getting Started
+```javascript
+//start using it!
+var newStack = ko.msf.createNewMStack({stackLimit:50,discardUndefined:false });
+var initObj = {context:this, stack:newStack};
+var testSub = ko.observable(50).extend({registerToMS: initObj});
 
-When this plugin is loaded it overrides the default template engine with a version that retains all of the normal functionality, but can also load external templates by using the AMD loader's text plugin.
+testSub(100);
+testSub(150);
 
-For example, when doing:
+newStack.triggerUndo(); //testSub() === 100
+newStack.triggerUndo(); //testSub() === 50
+newStack.triggerRedo(); //testSub() === 150
+```
 
-    <ul data-bind="template: { name: 'items', foreach: items }"></ul>
+##Multiple observables, one stack
+```javascript
+//start using it!
+var newStack = ko.msf.createNewMStack({stackLimit:50,discardUndefined:false });
+var initObj = {context:this, stack:newStack};
+var testSub = ko.observable(50).extend({registerToMS: initObj});
+var testSub2 = ko.observable("first").extend({registerToMS: initObj});
 
-The engine will first check to see if there is a `script` tag with the id of `items` and if not, it will dynamically require the template using the AMD loader's text plugin. By default, it will use `templates/` as the default path and `.tmpl.html` as the suffix.  So, in this case it would require `text!templates/items.tmpl.html`. Since, the path is built dynamically, if your template lives in a sub-directory, then you could specify your template like: `sub/path/items`.
+testSub(100);
+testSub2("second");
+testSub(150);
 
-These defaults can be overridden by setting properties on `ko.amdTemplateEngine`. For example:
+newStack.triggerUndo(); //testSub() === 100
+newStack.triggerUndo(); //testSub2() === "first"
+newStack.triggerRedo(); //testSub2() === "second"
+```
 
-    ko.amdTemplateEngine.defaultPath = "your/path/to/templates";
-    ko.amdTemplateEngine.defaultSuffix = ".template.html";
-    ko.amdTemplateEngine.defaultRequireTextPluginName = "text";
-    
-##module binding
+##Multiple observables, Multiple stacks
+```javascript
+//start using it!
+var newStack = ko.msf.createNewMStack({stackLimit:50,discardUndefined:false });
+var newStack3 = ko.msf.createNewMStack({stackLimit:50,discardUndefined:false });
+var initObj = {context:this, stack:newStack};
+var initObj3 = {context:this, stack:newStack3};
+var testSub = ko.observable(50).extend({registerToMS: initObj});
+var testSub2 = ko.observable("first").extend({registerToMS: initObj});
+var testSub3 = ko.observable("Maor").extend({registerToMS: initObj3});
 
-This plugin also creates a `module` binding that provides a number of ways to bind directly against an AMD module. The binding accepts a number of options and tries to make smart choices by default.
+testSub(100);
+testSub2("second");
+testSub(150)
+testSub3("Lia");
+testSub2("third");
 
-###Choosing data to bind against
+newStack.triggerUndo(); //testSub() === 100
+newStack.triggerUndo(); //testSub2() === "second"
+newStack3.triggerUndo() //testSub3() === "Maor"
+newStack.triggerRedo(); //testSub2() === "third"
+newStack3.triggerUndo() //testSub3() === "Lia"
+```
 
-Once the `module` binding loads an AMD module, there are three scenarios for how it determines the actual data to bind against:
+##Sequencing changes
+   ```javascript
+   //start using it!
+   var newStack = ko.msf.createNewMStack({stackLimit:50,discardUndefined:false });
+   var initObj = {context:this, stack:newStack};
+   var testSub = ko.observable(50).extend({registerToMS: initObj});
+   var testSub2 = ko.observable("first").extend({registerToMS: initObj});
 
-1. **constructor function** - If the module returns a function, then it is assumed that it is a constructor function and a new instance is used as the data.
+   newStack.startSequencing();
+   testSub(100);
+   testSub2("second");
+   testSub(150);
+   newStack.stopSequencing();
 
-2. **object returned** - If the module returns an object directly, then the binding will look for an initializer function (called `initialize` by default) and:
+   newStack.triggerUndo(); //testSub() === 50, testSub2() === "first"
+   newStack.triggerRedo(); //testSub() === 150, testSub2() === "second"
+   ```
 
-    a. if there is no initializer or the function does not return a value, then the data will be used directly.
-  
-    b. if the initializer function returns a value, then it will be used as the data.
-  
-So, this allows the binding to either construct a new instance, use data directly, or call a function that returns data.
+##Using augmented observable
+   ```javascript
+   //start using it!
+   var newStack = ko.msf.createNewMStack({stackLimit:50,discardUndefined:false });
+   var initObj = {context:this, stack:newStack};
+   var testSub = ko.registerdObservable(50, initObj);
 
-###Basic example (with inline template):
+   var sub = newStack.subscribeTo(function (memento){
+        console.log(memento.context) // reference to observable container
+        console.log(memento.subject) // reference to observable
+        console.log(memento.value) // value of observable to be changed to
+   });
 
-    <div data-bind="module: 'one'">
-         <div data-bind="text: name"></div>
-    </div>
-    
-In this example, it will load the module `one`, determine what data to bind against, and use the inline template.
+   testSub(100);
+   testSub2("second");
+   testSub(150);
 
-###Basic example (named template - could be external)
+   newStack.triggerUndo(); //testSub() === 50, testSub2() === "first"
+   newStack.triggerRedo(); //testSub() === 150, testSub2() === "second"
 
-    <div data-bind="module: 'one'"></div>
+   sub.dispose();
+   ```
 
-In this example, it will load the module `one`, determine what data to bind against, and use `one` as the template, which is resolved by the template engine as described above. 
+##Subscribe to undo/redo
+   ```javascript
+   //start using it!
+   var newStack = ko.msf.createNewMStack({stackLimit:50,discardUndefined:false });
+   var initObj = {context:this, stack:newStack};
+   var testSub = ko.observable(50).extend({registerToMS: initObj});
 
-###Example with options
+   var sub = newStack.subscribeTo(function (memento){
+        console.log(memento.context) // reference to observable container
+        console.log(memento.subject) // reference to observable
+        console.log(memento.value) // value of observable to be changed to
+   });
 
-    <div data-bind="module: { name: 'one', data: initialData }"></div>
+   testSub(100);
+   testSub2("second");
+   testSub(150);
 
-In this example, it will follow the same logic as the previous example, but it will pass the `initialData` to the module.
-    
-###Example with all options   
-    
-    <div data-bind="module: { name: 'one', data: initialData, template: 'oneTmpl',
-                              initializer: 'createItem', disposeMethod: 'clean', afterRender: myAfterRender }"></div>
-    
-This example includes a number of options options that can be passed to the `module` binding. In this case, the template is overriden to use `oneTmpl`, a custom initializer function is used, a custom disposal method is specified, and an `afterRender` function is passed on to the template binding.
+   newStack.triggerUndo(); //testSub() === 100
+   newStack.triggerUndo(); //testSub2() === "first"
+   newStack.triggerRedo(); //testSub2() === "second"
+   ```
+##General API
+  ```javascript
 
-###Dynamically binding against a module
+    /***
+    * returns the array of stacks
+    * @returns {Array}
+    */
+    ko.mcf.getMStacks
 
-The `module` binding supports binding against an observable or passing an observable for the `name`, `template` and `data` options. The content will be appropriately updated based on the new values. This allows you to dynamically bind an area to a module that is updated as the user interacts with your site.
+    /**
+     * Cleares all stacks in the system
+     */
+    ko.mcf.purgeMStacks
 
-###$module context variable
+    /**
+     * Creates a new stack and returns it
+     * @param options set of stack options
+     * @returns {ko.msf.mStack}
+     */
+    ko.mcf.createNewMStack
 
-The `module` binding adds a `$module` context variable that can be bound against. This can be useful when you want to bind against the equivalent of `$root` for just your module. When modules are nested inside other modules, `$module` will always refer to the root of the current module.
+    /**
+     * Destroys a given stack
+     * @param stack
+     * @returns {boolean}
+     */
+    ko.mcf.killMStack
 
-###module binding options
+    /**
+     * Returns the first stack in the list, createts one if non have been created before
+     * @returns {ko.msf.ms}
+     */
+    ko.mcf.getDefaultStack
 
-####name
-Provide the name of the module to load. The module will be loaded by combining the name with the value of `ko.bindingHandlers.module.baseDir` (defaults to empty). The name will also be used as the template, if the `template` option is not specified and the element does not have any child elements (inline template).
+    /**
+     * Returns the first stack in the list, createts one if non have been created before
+     * @returns {ko.msf.ms}
+     */
+    ko.msf.mStack
 
-####data
-The `data` option is used to pass values into a constructor function or into the initializer function if the module returns an object directly. If an array is specified, then it will be applied as the arguments to the function (if you really want to pass an array as the first argument, then you would have to wrap it in an array like `[myarray]`).
 
-####template
-The `template` option provides the ability to override the template used for the module. In some cases, you may want to share a template across multiple modules or bind a module against multiple templates.
+    /**
+    * Clears stack for gc
+    **/
+    ko.msf.mStack.clearForGc
 
-####initializer
-If the module returns an object (rather than a constructor function), then the binding will attempt to call an initializer function, if it exists. By default, this function is called `initialize`, but you can override the name of the function to call using this option or globally by setting `ko.bindingHandlers.module.initializer` to the name of the function that you want to use.
+    /**
+    * re initializes the stack
+    **/
+    ko.msf.mStack.reInit
 
-####disposeMethod
-When a module is swapped out, you can specify a custom function name to call to do any necessary clean up.
+    /**
+    * Weather or not the stack is currently triggering a memento
+    * @returns {boolean}
+     */
+     ko.msf.mStack.isUpdating
 
-####afterRender
-The `afterRender` function will be passed on the the template binding, if specified.
+     /**
+     * Stop listening to changes
+     **/
+     ko.msf.mStack.stopListening
 
-###module binding global options
-There are a couple of options that can be set globally for convenience.
+     /**
+     * Resume listening to changes
+     **/
+     ko.msf.mStack.resumeListening
 
-####ko.bindingHandlers.module.baseDir (default: "")
-The `baseDir` is used in building the path to use in the `require` statement. If your modules live in the `modules` directory, then you can specify it globally here.
+     /**
+     * Let's a caller subscribe a call back function before any mementos are triggered
+     * @param cb
+     * @returns {{}} dispose object
+     */
+     ko.msf.mStack.subscribeTo
 
-####ko.bindingHandlers.module.initializer (default: "initialize")
-This allows the ability to globally override the function that the `module` binding calls after loading an AMD module that does not return a constructor.
+     /**
+     * Handler for external calls to stack, creates mementos and stacks them to undo
+     *@param context The object containing the observable
+     *@param subject The observable that has changed
+     *@param val The previous value of the observable
+     **/
+     ko.msf.mStack.stackChange
 
-####ko.bindingHandlers.module.disposeMethod (default: "dispose")
-The dispose method name can be globally overriden. This function is optionally called when a module is being removed/swapped.
+     /**
+     * Trigger an undo
+     **/
+     ko.msf.mStack.triggerUndo
 
-##Dependencies
+     /**
+     * Trigger a redo
+     **/
+     ko.msf.mStack.triggerRedo
 
-* Knockout 2.0+
+     /**
+     * When this function is called, all following actions will be triggered as a single undo, Don't forget to stopSequencing!!!
+    **/
+    ko.msf.mStack.startSequencing
 
-##Examples
-The `examples` directory contains a sample using [require.js](http://requirejs.org/) and using [curl.js](https://github.com/cujojs/curl).
+    /**
+    * When this function is called, all actions that have been buffers in the sequence will be pushed to undo
+    **/
+    ko.msf.mStack.stopSequencing
+```
 
 ##License
 MIT [http://www.opensource.org/licenses/mit-license.php](http://www.opensource.org/licenses/mit-license.php)
