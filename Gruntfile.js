@@ -7,6 +7,13 @@ module.exports = function(grunt) {
                 configFile: 'karma.conf.js'
             }
         },
+        plato: {
+            your_task: {
+                files: {
+                    'reports': ['src/*.js']
+                }
+            }
+        },
         qunit: {
             all: {
                 options: {
@@ -33,9 +40,9 @@ module.exports = function(grunt) {
             },
             updatePR:{
                 options: {
-                    update: {selector:'#pr',attribute:'src', value:'../../Dist/<%= pkg.name %>.js'}
+                    update: {selector:'script[data-pr="true"]',attribute:'src', value:'../../dist/<%= pkg.name %>-X<%= pkg.version %>.js'}
                 },
-                src: 'Demos/view/rectangle.html'  //update the dist/index.html (the src index.html is copied there)
+                src: 'demos/view/rectangle.html'  //update the dist/index.html (the src index.html is copied there)
             }
         },
         concat: {
@@ -46,7 +53,7 @@ module.exports = function(grunt) {
                 // the files to concatenate
                 src: ['<%= dom_munger.data.myJsRefs %>'],
                 // the location of the resulting JS file
-                dest: 'Dist/<%= pkg.name %>.js'
+                dest: 'dist/<%= pkg.name %>.js'
             }
         },
         watch: {
@@ -58,8 +65,8 @@ module.exports = function(grunt) {
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
             build: {
-                src: 'Dist/<%= pkg.name %>.js',
-                dest: 'Dist/<%= pkg.name %>-X<%= pkg.version %>.js'
+                src: 'dist/<%= pkg.name %>.js',
+                dest: 'dist/<%= pkg.name %>-X<%= pkg.version %>.js'
             }
         },
         jshint: {
@@ -72,6 +79,15 @@ module.exports = function(grunt) {
                     jQuery: true,
                     console: true,
                     module: true
+                }
+            }
+        },
+        jsdoc : {
+            dist : {
+                src: ['src/*.js'],
+                options: {
+                    destination: 'docs',
+                    private:true
                 }
             }
         }
@@ -87,8 +103,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-dom-munger');
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-karma');
-    grunt.registerTask('test', ['karma']);
+    grunt.loadNpmTasks('grunt-plato');
+    grunt.loadNpmTasks('grunt-jsdoc');
+
+    grunt.registerTask('test', ['karma', 'plato']);
+    grunt.registerTask('docs', ['jsdoc']);
 // the default task can be run just by typing "grunt" on the command line
-    grunt.registerTask('default', ['dom_munger', 'jshint',  'concat']);
+    grunt.registerTask('default', ['jsdoc','plato', 'dom_munger', 'jshint',  'concat','uglify']);
 
 };

@@ -269,7 +269,7 @@
 <span class="cline-any cline-yes">12</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">﻿ko.MCT.MStack.Memento = function (contex,subj, val) {
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">﻿ko.MCT.mStack.Memento = function (contex,subj, val) {
     var subject = subj || (<span class="fstat-no" title="function not covered" ><span class="branch-1 cbranch-no" title="branch not covered" >function () {</span> })</span>; //Set subject or set default empty function(because we deal with observable default must be dummy function)
     var value = val !== undefined ? val :  "";                    //Set value or default empty string
     /*
@@ -286,7 +286,7 @@
    *@return duplicate memento containing subject current value
    */
     this.duplicate = function () {
-        var duplicate = new ko.MCT.MStack.Memento(contex, subject, subject());
+        var duplicate = new ko.MCT.mStack.Memento(contex, subject, subject());
         return duplicate;
     };
     /*

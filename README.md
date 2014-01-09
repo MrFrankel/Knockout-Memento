@@ -229,6 +229,9 @@ newStack3.triggerUndo() //testSub3() === "Lia"
     ko.msf.mStack.stopSequencing
 ```
 
+##Demo
+A demo can be found in the demo folder fo this project
+
 ##License
 MIT [http://www.opensource.org/licenses/mit-license.php](http://www.opensource.org/licenses/mit-license.php)
 

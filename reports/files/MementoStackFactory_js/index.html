@@ -45,11 +45,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"></i></a></h2>
-      <p class="stat">74.40</p>
+      <p class="stat">74.05</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC"></i></h2>
-      <p class="stat">40</p>
+      <p class="stat">68</p>
     </div>
   </div>
   <div class="row historical">
@@ -63,7 +63,7 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty"></i></a></h2>
-      <p class="stat">22.50</p>
+      <p class="stat">21.85</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs"></i></a></h2>
@@ -90,38 +90,71 @@
 
 <div class="container">
   <div class="row">
-    <textarea id="file-source" class="col-md-12">ko.msf = (function () {
-    var mStacks = [];
+    <textarea id="file-source" class="col-md-12">/**
+ * MementoStackFactory is the creator and manager for mementos stacks, it is responsible for creating stacks, destroying them and also acts as an entry point to the
+ * @name Memento Stack Factory
+ * @namespace ko
+ */
+ko.msf = (function () {
+    var mStacks = [];       //Array of stacks in the system
 
+    /**
+   * returns the array of stacks
+   * @namespace ko.msf
+   * @returns {Array}
+   */
     var getMStacks = function(){
         return mStacks;
     };
+
+    /**
+     * Cleares all stacks in the system
+     */
     var purgeMStacks = function(){
         mStacks.forEach(function(stack){
             stack.clearForGc();
         });
         mStacks.length = 0;
     };
-    var createNewMStack = function(settings){
-        var newStack = new ko.msf.mStack(settings);
+
+    /**
+     * Creates a new stack and returns it
+     * @param options set of stack options
+     * @returns {ko.msf.mStack}
+     */
+    var createNewMStack = function(options){
+        var newStack = new ko.msf.mStack(options);
         mStacks.push(newStack);
         return newStack;
 
     };
+
+    /**
+     * Destroys a given stack
+     * @param stack
+     * @returns {boolean}
+     */
     var killMStack = function(stack){
         var indexOf = mStacks.indexOf(stack);
         if (indexOf == -1)
             return false;
         stack.clearForGc();
         mStacks.splice(indexOf, 1);
-
+        return true;
     };
+
+    /**
+     * Returns the first stack in the list, createts one if non have been created before
+     * @returns {ko.msf.ms}
+     */
     var getDefaultStack = function(){
         if(mStacks.length &gt; 0)
             return mStacks[0];
         else
             return createNewMStack();
     };
+
+    //API
     return {
         getMStacks:getMStacks,
         killMStack:killMStack,

@@ -45,11 +45,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"></i></a></h2>
-      <p class="stat">77.23</p>
+      <p class="stat">77.80</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC"></i></h2>
-      <p class="stat">48</p>
+      <p class="stat">51</p>
     </div>
   </div>
   <div class="row historical">
@@ -63,11 +63,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty"></i></a></h2>
-      <p class="stat">20.09</p>
+      <p class="stat">19.50</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs"></i></a></h2>
-      <p class="stat">0.21</p>
+      <p class="stat">0.20</p>
     </div>
   </div>
 </div>
@@ -90,14 +90,18 @@
 
 <div class="container">
   <div class="row">
-    <textarea id="file-source" class="col-md-12">ko.msf.mStack.Memento = function (contex,subject, value) {
+    <textarea id="file-source" class="col-md-12">/**
+ * @MementoStackFactory is the creator and manager for mementos stacks, it is responsible for creating stacks, destroying them and also acts as an entry point to the
+ * @author Maor Frankel
+ * @version 1.0.0
+ * @constructor
+ */
+ko.msf.mStack.Memento = function (contex,subject, value) {
     var context = contex || (function () { }); //Set subject or set default empty function(because we deal with observable default must be dummy function)
 
-    /**
-    * Trigger a previous value change on the subject
-    **/
+
     var notifySubscribers = function(cbs){
-        if(cbs instanceof  Array){
+        if(cbs instanceof  Array){ // in case no subscribers have been passed
             cbs.forEach(function(cb){
                 cb({
                     context:context,
@@ -108,6 +112,11 @@
         }
     };
 
+    /**
+     * Trigger this memento
+     * @param cbs array of subscribers
+     * @returns {*} the result of clearForGc();
+     */
     this.trigger = function(cbs) {
         notifySubscribers(cbs);
         subject(value);
@@ -120,8 +129,8 @@
    *@return duplicate memento containing subject current value
    **/
     this.duplicate = function () {
-        var duplicate = new ko.msf.mStack.Memento(context, subject, subject());
-        return duplicate;
+        return (new ko.msf.mStack.Memento(context, subject, subject()));
+
     };
     /**
     * Clear all references so object is collected

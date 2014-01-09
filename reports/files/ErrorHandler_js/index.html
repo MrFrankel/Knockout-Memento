@@ -49,7 +49,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC"></i></h2>
-      <p class="stat">12</p>
+      <p class="stat">16</p>
     </div>
   </div>
   <div class="row historical">
@@ -91,9 +91,17 @@
 <div class="container">
   <div class="row">
     <textarea id="file-source" class="col-md-12">/**
- * Created by Maor.Frankel on 12/31/13.
+ * @MementoStackFactory
+ * @author Maor Frankel
+ * @version 1.0.0
+ * @constructor
  */
- ko.msf.ErrorHandler =  (function(){
+
+ko.msf.ErrorHandler =  (function(){
+     /**
+      * Throws a Memento exception
+      * @param msg  String to add to Memento Error as an exception
+      */
     var throwError = function (msg){
         var err = new Error();
         err.message = &quot;ko.Memento Error: &quot; + msg;

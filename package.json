@@ -1,6 +1,6 @@
 {
   "name": "knockout_Memento",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "devDependencies": {
     "grunt": "~0.4.2",
     "grunt-contrib-jshint": "~0.8.0",
@@ -24,6 +24,8 @@
     "grunt-karma": "~0.6.2",
     "qunitjs": "~1.12.0",
     "karma-qunit": "~0.1.1",
-    "karma-html-reporter": "~0.1.1"
+    "karma-html-reporter": "~0.1.1",
+    "grunt-plato": "~0.2.1",
+    "grunt-jsdoc": "~0.5.1"
   }
 }

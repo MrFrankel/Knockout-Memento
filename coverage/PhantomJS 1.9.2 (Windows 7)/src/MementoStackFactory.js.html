@@ -183,7 +183,7 @@
     <h1>Code coverage report for <span class="entity">./src/MementoStackFactory.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">82.61% <small>(19 / 23)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">83.33% <small>(20 / 24)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
         Branches: <span class="metric">25% <small>(1 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -192,7 +192,7 @@
         Functions: <span class="metric">85.71% <small>(6 / 7)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">82.61% <small>(19 / 23)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">83.33% <small>(20 / 24)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
     </h2>
     <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">./src\</a> &#187; MementoStackFactory.js</div>
@@ -238,22 +238,81 @@
 37
 38
 39
-40</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">11</span>
-<span class="cline-any cline-yes">11</span>
-<span class="cline-any cline-yes">11</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -262,6 +321,11 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
@@ -270,6 +334,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -277,38 +343,71 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">﻿ko.msf = (function () {
-    var mStacks = [];
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">﻿/**
+ * MementoStackFactory is the creator and manager for mementos stacks, it is responsible for creating stacks, destroying them and also acts as an entry point to the
+ * @name Memento Stack Factory
+ * @namespace ko
+ */
+ko.msf = (function () {
+    var mStacks = [];       //Array of stacks in the system
 &nbsp;
+    /**
+   * returns the array of stacks
+   * @namespace ko.msf
+   * @returns {Array}
+   */
     var getMStacks = function(){
         return mStacks;
     };
+&nbsp;
+    /**
+     * Cleares all stacks in the system
+     */
     var purgeMStacks = function(){
         mStacks.forEach(function(stack){
             stack.clearForGc();
         });
         mStacks.length = 0;
     };
-    var createNewMStack = function(settings){
-        var newStack = new ko.msf.mStack(settings);
+&nbsp;
+    /**
+     * Creates a new stack and returns it
+     * @param options set of stack options
+     * @returns {ko.msf.mStack}
+     */
+    var createNewMStack = function(options){
+        var newStack = new ko.msf.mStack(options);
         mStacks.push(newStack);
         return newStack;
 &nbsp;
     };
+&nbsp;
+    /**
+     * Destroys a given stack
+     * @param stack
+     * @returns {boolean}
+     */
     var killMStack = function(stack){
         var indexOf = mStacks.indexOf(stack);
         <span class="missing-if-branch" title="if path not taken"" >I</span>if (indexOf == -1)
 <span class="cstat-no" title="statement not covered" >            return false;</span>
         stack.clearForGc();
         mStacks.splice(indexOf, 1);
-&nbsp;
+        return true;
     };
+&nbsp;
+    /**
+     * Returns the first stack in the list, createts one if non have been created before
+     * @returns {ko.msf.ms}
+     */
     var getDefaultStack = <span class="fstat-no" title="function not covered" >function(){</span>
 <span class="cstat-no" title="statement not covered" >        if(mStacks.length &gt; 0)</span>
 <span class="cstat-no" title="statement not covered" >            return mStacks[0];</span>
         else
 <span class="cstat-no" title="statement not covered" >            return createNewMStack();</span>
     };
+&nbsp;
+    //API
     return {
         getMStacks:getMStacks,
         killMStack:killMStack,
@@ -321,7 +420,7 @@
 
 </div>
 <div class="footer">
-    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Jan 02 2014 18:32:23 GMT+0200 (Jerusalem Standard Time)</div>
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Jan 07 2014 14:31:03 GMT+0200 (Jerusalem Standard Time)</div>
 </div>
 
 <script src="../prettify.js"></script>

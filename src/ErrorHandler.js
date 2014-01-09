@@ -1,12 +1,18 @@
 /**
- * Created by Maor.Frankel on 12/31/13.
+ * @MementoStackFactory
+ * @author Maor Frankel
+ * @version 1.0.0
+ * @constructor
  */
 
-
- ko.MCT.ErrorHandler =  (function(){
+ko.msf.ErrorHandler =  (function(){
+     /**
+      * Throws a Memento exception
+      * @param msg  String to add to Memento Error as an exception
+      */
     var throwError = function (msg){
         var err = new Error();
-        err.message = "ko.MCT Error: " + msg;
+        err.message = "ko.Memento Error: " + msg;
         throw err;
     };
 

@@ -1,12 +1,16 @@
 function ce(id){
-    var stack = ko.StateManager.createNewStack({discardeUndefined:true, stackLimit:50})
-    var initObj = {context:this, scope:stack};
-    this.opacity = ko.observable(1).extend({registerToSM: initObj});
-    this.X = ko.observable(200).extend({registerToSM: initObj});
-    this.Y = ko.observable(200).extend({registerToSM: initObj});
-    this.width = ko.observable(100).extend({registerToSM: initObj});
-    this.height = ko.observable(100).extend({registerToSM: initObj});
+    var stack = ko.msf.createNewMStack({discardeUndefined:true, stackLimit:50})
+    var initObj = {context:this, stack:stack};
+    this.opacity = ko.observable(1).extend({registerToMS: initObj});
+    this.X = ko.observable(200).extend({registerToMS: initObj});
+    this.Y = ko.observable(200).extend({registerToMS: initObj});
+    this.width = ko.observable(100).extend({registerToMS: initObj});
+    this.height = ko.observable(100).extend({registerToMS: initObj});
     this.uiElem = $('#' + id);
+
+    this.getMyStack = function(){
+        return stack;
+    }
 
     this.uiElem.draggable({
         scroll: false,
@@ -61,7 +65,7 @@ ko.bindingHandlers.Xc = {
     update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
         var jqElement = $(element),
             val = ko.utils.unwrapObservable(valueAccessor());
-        jqElement.css('left', val);
+        jqElement.css('left', parseInt(val,10));
 
     }
 };
@@ -72,7 +76,7 @@ ko.bindingHandlers.Yc = {
     update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
         var jqElement = $(element),
             val = ko.utils.unwrapObservable(valueAccessor());
-        jqElement.css('top', val);
+        jqElement.css('top', parseInt(val,10));
     }
 };
 ko.bindingHandlers.Hc = {
@@ -82,7 +86,7 @@ ko.bindingHandlers.Hc = {
     update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
         var jqElement = $(element),
             val = ko.utils.unwrapObservable(valueAccessor());
-        jqElement.css('height', val);
+        jqElement.css('height', parseInt(val,10));
 
     }
 };
@@ -93,7 +97,7 @@ ko.bindingHandlers.Wc = {
     update: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
         var jqElement = $(element),
             val = ko.utils.unwrapObservable(valueAccessor());
-        jqElement.css('width', val);
+        jqElement.css('width', parseInt(val,10));
     }
 };
 ko.bindingHandlers.opacity = {

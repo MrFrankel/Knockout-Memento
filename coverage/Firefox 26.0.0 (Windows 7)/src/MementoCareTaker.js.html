@@ -296,7 +296,7 @@
     var createNewMStack = function(dependancies, settings){
         dependancies =  dependancies || {};
         dependancies.errHandler = ko.MCT.ErrorHandler;
-        var newStack = new ko.MCT.MStack(dependancies, settings);
+        var newStack = new ko.MCT.mStack(dependancies, settings);
         mStacks.push(newStack);
         return newStack;
 &nbsp;
