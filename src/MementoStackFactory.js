@@ -1,4 +1,4 @@
-﻿/**
+/**
  * MementoStackFactory is the creator and manager for mementos stacks, it is responsible for creating stacks, destroying them and also acts as an entry point to the
  * @name Memento Stack Factory
  * @namespace ko
