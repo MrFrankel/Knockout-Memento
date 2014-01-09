@@ -15,7 +15,7 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
       files: [
           {pattern:'libs/*.js',included: true, served:true},
-          {pattern:'src/MementoCareTaker.js',included: true, served:true},
+          {pattern:'src/MementoStackFactory.js',included: true, served:true},
           {pattern:'src/MementoStack.js',included: true, served:true},
           {pattern:'src/*.js',included: true, served:true},
           {pattern: 'tests/qTests.js',included: true, served:true}
@@ -33,7 +33,7 @@ module.exports = function(config) {
     // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
     reporters: ['progress','html', 'coverage'],
     htmlReporter: {
-        outputFile: 'tests/units.html'
+        outputFile: 'tests/qTests.html'
     },
     preprocessors: {
         // source files, that you wanna generate coverage for
@@ -55,7 +55,7 @@ module.exports = function(config) {
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
+    autoWatch: true,
 
 
     // Start these browsers, currently available:

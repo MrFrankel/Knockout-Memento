@@ -1,217 +1,300 @@
-ko.StateManager = (function () {
-    var stacks = [];
+/**
+ * Created by Maor.Frankel on 12/31/13.
+ * MementoStackFactory is the creator and manager for mementos stacks, it is responsible for creating stacks, destroying them and also acts as an entry point to the
+ * library
+ */
 
-    var getStacks = function(){
-        return stacks;
+ko.msf = (function () {
+    var mStacks = [];       //Array of stacks in the system
+
+    /***
+   * returns the array of stacks
+   * @returns {Array}
+   */
+    var getMStacks = function(){
+        return mStacks;
     };
-    var purgeStacks = function(){
-        stacks.forEach(function(stack){
+
+    /**
+     * Cleares all stacks in the system
+     */
+    var purgeMStacks = function(){
+        mStacks.forEach(function(stack){
             stack.clearForGc();
         });
-        stacks.length = 0;
+        mStacks.length = 0;
     };
-    var createNewStack = function(dependancies, settings){
-        dependancies =  dependancies || {};
-        dependancies.errHandler = ko.StateManager.ErrorHandler;
-        var newStack = new ko.StateManager.Stack(dependancies, settings);
-        stacks.push(newStack);
+
+    /**
+     * Creates a new stack and returns it
+     * @param options set of stack options
+     * @returns {ko.msf.mStack}
+     */
+    var createNewMStack = function(options){
+        var newStack = new ko.msf.mStack(options);
+        mStacks.push(newStack);
         return newStack;
 
     };
-    var killStack = function(stack){
-        var indexOf = stacks.indexOf(stack);
+
+    /**
+     * Destroys a given stack
+     * @param stack
+     * @returns {boolean}
+     */
+    var killMStack = function(stack){
+        var indexOf = mStacks.indexOf(stack);
         if (indexOf == -1)
             return false;
-
-        var kStack = stacks[indexOf];
-        kStack.clearForGc();
-        stacks.splice(indexOf, 1);
-
+        stack.clearForGc();
+        mStacks.splice(indexOf, 1);
+        return true;
     };
+
+    /**
+     * Returns the first stack in the list, createts one if non have been created before
+     * @returns {ko.msf.ms}
+     */
     var getDefaultStack = function(){
-        if(stacks.length > 0)
-            return stacks[0];
+        if(mStacks.length > 0)
+            return mStacks[0];
         else
-            return createNewStack();
+            return createNewMStack();
     };
+
+    //API
     return {
-        getStacks:getStacks,
-        killStack:killStack,
-        purgeStacks:purgeStacks,
+        getMStacks:getMStacks,
+        killMStack:killMStack,
+        purgeMStacks:purgeMStacks,
         getDefaultStack:getDefaultStack,
-        createNewStack:createNewStack
+        createNewMStack:createNewMStack
     };
 })();
 /**
  * Created by Maor.Frankel on 12/31/13.
+ * MementoStack is the main core functionality of the ko_memento library, its mission is to listen to any observable registered to it
+ * and maintain a stack of mementos containing changes made to them in the order that they occurred. it also has the responsibility of
+ * triggering these mementos into action and maintaining a mirror stack for redo's
  */
-ko.StateManager.Stack = function (dependancies, settings) {
-        settings = settings || {};
-        settings = {
-            stackLimit: settings.stackLimit || 50,
-            discardeUndefined: settings.discardeUndefined || false
-        };
-        var errhandler = dependancies.errHandler;
 
-        var listen = true;
-        var undoStack = [];               //Array containing all undo's
-        var redoStack = [];               //Array containing all redo's
-        var seqBufferArray = [];          //Buffer array holding all sequenced actions to be stored as a single undo/redo
-        var sequencingMode = 0  ;       //Flag stating all current changes registering should be stacked
-        var updating = false;             //Flag stating an update is in progress and new stack changed should not be registered
-        /*
-         * Pushes a buffer into a given stack
-         *@stack The stack which we want to push on
-         *@buffer The buffer we want to preserve
-         */
-        var pushBuffer = function(stack, buffer) {
-            if (stack.length > settings.stackLimit)//Make sure we limit the stack
-                stack.shift(); //If over limit, remove first member
+/**
+ * @Constructor for memento stacks
+ * @param options settings
+ */
+ko.msf.mStack = function (options) {
+    options = options || {};//in case no settings variable has been passed
+    options = {
+        stackLimit: options.stackLimit || 50,
+        discardUndefined: options.discardUndefined|| false
+    };
+
+
+    var errHandler = ko.msf.ErrorHandler;
+    var listen = true;
+    var subscribers = [];             //Array listing all subscribers to this stack
+    var undoStack = [];               //Array containing all undo's
+    var redoStack = [];               //Array containing all redo's
+    var seqBufferArray = [];          //Buffer array holding all sequenced actions to be stored as a single undo/redo
+    var sequencingMode = 0  ;         //Flag stating all current changes registering should be stacked
+    var updating = false;             //Flag stating an update is in progress and new stack changed should not be registered
+    
+    /**
+     * Pushes a buffer into a given stack
+     *@param stack stack The stack which we want to push on
+     *@param buffer buffer The buffer we want to preserve
+    **/
+    var pushBuffer = function(stack, buffer) {
+        if (stack.length > options.stackLimit)//Make sure we limit the stack
+            stack.shift(); //If over limit, remove first member
 
             stack.push(buffer.splice(0));//Push buffer to given stack
             buffer.length = 0;//Purge buffer
         };
 
-        /*
-         * Executes trigger on a given stack
-         *@cStack The Stack to be triggered
-         *@oStack The mirror stack
-         */
-        var trigger = function (cStack, oStack) {
-            var mementos = cStack.pop();//Get mementos
-            if (!mementos)//Make sure we are not at the bottom of the stack
-                return false;
+    /**
+    * Executes trigger on a given stack
+    *@param cStack The Stack to be triggered
+    *@param oStack The mirror stack
+    **/
+    var trigger = function (cStack, oStack) {
+        var mementos = cStack.pop();//Get mementos
+        if (!mementos)//Make sure we are not at the bottom of the stack
+           return false;
 
-            var buffer = [];
-            mementos.forEach(function (memento) {
-                buffer.push(memento.duplicate());
-                updating = true;
-                memento.trigger();
-                updating = false;
-            }.bind(this));
-            oStack.push(buffer.splice(0));//Push duplicate memento to mirror stack
-            buffer.length = 0;
-
-            return true;
-        };
-        /*
-         * Clears all stacks of all history
-         */
-        var purgeStacks = function () {
-            undoStack.length = 0;
-            redoStack.length = 0;
-        };
-
-        /*
-         * Reinitialize all data
-         */
-        this.clearForGc = function () {
-            for (var property in this) {
-                if (this.hasOwnProperty(property)) {
-                    this[property] = undefined;
-                }
-            }
-            return true;
-        };
-        this.reInit = function () {
-            purgeStacks();
-            seqBufferArray.length = 0;
+        var buffer = [];
+        mementos.forEach(function (memento) {
+            buffer.push(memento.duplicate());
+            updating = true;
+            memento.trigger(subscribers);
             updating = false;
-            sequencingMode = false;
+        }.bind(this));
+        oStack.push(buffer.splice(0));//Push duplicate memento to mirror stack
+        buffer.length = 0;
+
+        return true;
+    };
+
+    /**
+    * Clears all stacks of all history
+    **/
+    var purgeStacks = function () {
+        undoStack.length = 0;
+        redoStack.length = 0;
+    };
+
+
+    /**
+    * Clears stack for gc
+    **/
+    this.clearForGc = function () {
+         subscribers.length = 0;
+         undoStack.length = 0;
+         redoStack.length = 0;
+         seqBufferArray.length = 0;
+         for (var property in this) {
+             if (this.hasOwnProperty(property)) {
+                 this[property] = undefined;
+             }
+         }
+
+         return true;
+    };
+
+    /**
+    * re initializes the stack
+    **/
+    this.reInit = function () {
+         purgeStacks();
+         seqBufferArray.length = 0;
+         updating = false;
+         sequencingMode = false;
+    };
+
+    /**
+    * Weather or not the stack is currently triggering a memento
+    * @returns {boolean}
+     */
+     this.isUpdating = function () {
+         return updating;
+     };
+
+     /**
+     * Stop listening to changes
+     **/
+     this.stopListening = function () {
+         listen = false;
+     };
+
+     /**
+     * Resume listening to changes
+     **/
+     this.resumeListening = function () {
+         listen = true;
+     };
+
+     /**
+     * Let's a caller subscribe a call back function before any mementos are triggered
+     * @param cb
+     * @returns {{}}
+     */
+     this.subscribeTo = function (cb){
+          if(!cb instanceof Function){
+             errHandler.throwError("Subscriber is not an instance of Function");
+             return false;
+          }
+          subscribers.push(cb);
+
+         var sub = {};//create an emtpy object to call dispose on
+          sub.dispose = function () {//this functin maintains the given call back closure so it can be triggered latter on
+            var indexOf = subscribers.indexOf(cb);
+            subscribers.splice(indexOf, 1);
+          };
+
+         return sub;
         };
 
-        /*
-         * Clears all stacks of all history
-         */
-        this.isUpdating = function () {
-            return updating;
-        };
+     /**
+     * Handler for external calls to stack, creates mementos and stacks them to undo
+     *@param context The object containing the observable
+     *@param subject The observable that has changed
+     *@param val The previous value of the observable
+     **/
+     this.stackChange = function (context, subject, val) {
+          if (updating || !listen)//Make sure we are not currently updating or not listening
+             return false;
 
-        /*
-         * Stop listening to changes
-         */
-        this.stopListening = function () {
-            listen = false;
-        };
+         if (!subject){ // make sure no empty subject or values are set
+             errHandler.throwError("No subject has been passed to register on");
+             return false;
+         }
+         if(options.discardUndefined && val === undefined ){//discard undefined or null values
+            return false;
+          }
 
-        /*
-         * Resume listening to changes
-         */
-        this.resumeListening = function () {
-            listen = true;
-        };
-        /*
-         * Handler for external calls to stack, creates mementos and stacks them to undo
-         *@subject The observable that has changed
-         *@val The previous value of the observable
-         */
-        this.stackChange = function (contex, subject, val) {
-            if (updating || !listen)//Make sure we are not currently updating
-                return false;
+         redoStack.length = 0; //clear redo array after new undo is pushed
+         var memento = new ko.msf.mStack.Memento(context, subject, val);
+         seqBufferArray.push(memento);
+         if (sequencingMode > 0) /// if we are stacking, don't push to undoStack
+             return true;
 
-            if (!subject){ // make sure no empty subject or values are set
-                errhandler.throwError("No subject has been passed to register on");
-                return false;
-            }
-            if(settings.discardeUndefined && val === undefined ){//discard undefined or null values
-               return false;
-            }
+         pushBuffer(undoStack, seqBufferArray);
 
+          return true;
+     };
 
-            redoStack.length = 0; //clear redo array after new undo is pushed
-            var memento = new ko.StateManager.Stack.Memento(contex, subject, val);
-            seqBufferArray.push(memento);
-            if (sequencingMode > 0) /// if we are stacking, don't push to undoStack
-                return true;
+     /**
+     * Trigger an undo
+     **/
+     this.triggerUndo = function () {
+          return trigger(undoStack, redoStack);
+     };
 
-            pushBuffer(undoStack, seqBufferArray);
+     /**
+     * Trigger a redo
+     **/
+     this.triggerRedo = function () {
+          return trigger(redoStack, undoStack);
+     };
 
-            return true;
-        };
+     /**
+     * When this function is called, all following actions will be triggered as a single undo, Don't forget to stopSequencing!!!
+    **/
+    this.startSequencing = function () {
+         sequencingMode += 1;
+    };
 
-        /*
-         * Trigger an undo
-         */
-        this.triggerUndo = function () {
-           return trigger(undoStack, redoStack);
-        };
+    /**
+    * When this function is called, all actions that have been buffers in the sequence will be pushed to undo
+    **/
+    this.stopSequencing = function () {
+         sequencingMode -= 1;
+         if(sequencingMode < 0){
+            sequencingMode = 0;
+            errHandler.throwError("Sequencing Mode has been stooped but but never started, ignored");
+         }
 
-        /*
-         * Trigger a redo
-         */
-        this.triggerRedo = function () {
-            return trigger(redoStack, undoStack);
-        };
-
-        /*
-         * When this function is called, all following actions will be triggered as a single undo, Don't forget to stopSequencing!!!
-         */
-        this.startSequencing = function () {
-            sequencingMode += 1;
-        };
-
-        /*
-         * When this function is called, all actions that have been buffers in the sequence will be pushed to undo
-         */
-        this.stopSequencing = function () {
-            sequencingMode -= 1;
-            if(sequencingMode < 0){
-               sequencingMode = 0;
-                errhandler.throwError("Sequencing Mode has been stooped but but never started, ignored");
-            }
-
-            if (sequencingMode > 0){
-                return;
-            }
-            pushBuffer(undoStack, seqBufferArray.reverse());
-        };
-
+         if (sequencingMode > 0){
+             return;
+         }
+         pushBuffer(undoStack, seqBufferArray.reverse());
+    };
 
 };
-ko.extenders.registerToSM = function (target, options) {
-    var errors = {};
+/**
+ * Created by Maor.Frankel on 12/31/13.
+ * Extensions are a list of ko extenders and augmented observables set as api for the component
+ */
+
+/**
+ * registerToMs is a ko extender which can be assigned to any observable making it a registered observable to a given memento stack
+ * @param target is the observable which has been extended, this is passed automatically by the extend funtion of ko
+ * @param options is an object containing possible option set by the user
+ * @returns {*} the augmented observable
+ */
+ko.extenders.registerToMS = function (target, options) {
     options = options || {};
-    var stack = options.stack || ko.StateManager.getDefaultStack();
+    var stack = options.stack || ko.msf.getDefaultStack();
 
     //computed observable that we will return
     var result = ko.computed({
@@ -227,37 +310,57 @@ ko.extenders.registerToSM = function (target, options) {
         }
     });
     result.dontReg = false;
-
+    /**
+     * Tell this observable to stop registering its values to its stack
+     */
     result.stopRegistering = function () {
         result.dontReg = true;
     };
 
+    /**
+     * Tell this observable to resume registering its values to its stack
+     */
     result.resumeRegistering = function () {
         result.dontReg = false;
     };
 
+    /**
+     * Tell this observable to register its current value
+     */
     result.registerCurrentValue = function () {
         result.registerAValue(target());
     };
-
+    /**
+     * Tell the observable to register a given value
+     * @param valueToReg the value to register
+     */
     result.registerAValue = function (valueToReg) {
-        stack.stackChange(options.contex, result, valueToReg);
+        stack.stackChange(options.context, result, valueToReg);
     };
 
+    /**
+     * Let the world know the observable has changed
+     */
     result.valueHasMutated = function () {
-        result.notifySubscribers(_actualValue);
+        result.notifySubscribers(target);
     };
 
 
     return result;
 };
 
+/**
+ * registerdObservable is a augmented observable registered  a given memento stack
+ * @param initialValue the first value to be set on the observable
+ * @param options is an object containing possible option set by the user
+ * @returns {*} the augmented observable
+ */
 
-ko.registerdObservable = function (initialValue, reff, careTaker) {
+ko.registerdObservable = function (initialValue, options) {
     //private variables
     var _actualValue = ko.observable(initialValue);
-
-
+    options = options || {};
+    var stack = options.stack || ko.msf.getDefaultStack();
     //computed observable that we will return
     var result = ko.computed({
         //always return the actual value
@@ -271,24 +374,37 @@ ko.registerdObservable = function (initialValue, reff, careTaker) {
             _actualValue(newValue);
         }
     });
-    result.dontReg = false;
-
+    /**
+     * Tell this observable to stop registering its values to its stack
+     */
     result.stopRegistering = function () {
         result.dontReg = true;
     };
 
+    /**
+     * Tell this observable to resume registering its values to its stack
+     */
     result.resumeRegistering = function () {
         result.dontReg = false;
     };
 
+    /**
+     * Tell this observable to register its current value
+     */
     result.registerCurrentValue = function () {
         result.registerAValue(_actualValue());
     };
-
+    /**
+     * Tell the observable to register a given value
+     * @param valueToReg the value to register
+     */
     result.registerAValue = function (valueToReg) {
-        careTaker.stackChange(reff, result, valueToReg);
+        stack.stackChange(options.context, result, valueToReg);
     };
 
+    /**
+     * Let the world know the observable has changed
+     */
     result.valueHasMutated = function () {
         result.notifySubscribers(_actualValue);
     };
@@ -296,33 +412,55 @@ ko.registerdObservable = function (initialValue, reff, careTaker) {
 
     return result;
 };
-ko.StateManager.Stack.Memento = function (contex,subj, val) {
-    var subject = subj || (function () { }); //Set subject or set default empty function(because we deal with observable default must be dummy function)
-    var value = val !== undefined ? val :  "";                    //Set value or default empty string
-    /*
-    * Trigger a previous value change on the subject
-    */
-    this.trigger = function() {
+/**
+ * @MementoStackFactory is the creator and manager for mementos stacks, it is responsible for creating stacks, destroying them and also acts as an entry point to the
+ * @author <a href="mailto:Maorfrank@gmail.com">Maor Frankel</a>
+ * @version 1.0.0
+ * @constructor
+ */
+ko.msf.mStack.Memento = function (contex,subject, value) {
+    var context = contex || (function () { }); //Set subject or set default empty function(because we deal with observable default must be dummy function)
+
+
+    var notifySubscribers = function(cbs){
+        if(cbs instanceof  Array){ // in case no subscribers have been passed
+            cbs.forEach(function(cb){
+                cb({
+                    context:context,
+                    subject:subject,
+                    value:value
+                });
+            });
+        }
+    };
+
+    /**
+     * Trigger this memento
+     * @param cbs array of subscribers
+     * @returns {*} the result of clearForGc();
+     */
+    this.trigger = function(cbs) {
+        notifySubscribers(cbs);
         subject(value);
         return this.clearForGc();
 
     };
     
-   /*
+   /**
    * Create a duplicate object with same subject and current subject value
    *@return duplicate memento containing subject current value
-   */
+   **/
     this.duplicate = function () {
-        var duplicate = new ko.StateManager.Stack.Memento(contex, subject, subject());
-        return duplicate;
+        return (new ko.msf.mStack.Memento(context, subject, subject()));
+
     };
-    /*
+    /**
     * Clear all references so object is collected
-    */
+    **/
     this.clearForGc = function () {
       subject = undefined;
       value = undefined;
-      contex = undefined;
+      context = undefined;
       for (var property in this) {
            if (this.hasOwnProperty(property)) {
                this[property] = undefined;
@@ -334,13 +472,16 @@ ko.StateManager.Stack.Memento = function (contex,subj, val) {
 
 /**
  * Created by Maor.Frankel on 12/31/13.
+ * ErrorHandler is the object which handles all error's and exception in the component
  */
-
-
- ko.StateManager.ErrorHandler =  (function(){
+ ko.msf.ErrorHandler =  (function(){
+     /**
+      * Throws a Memento exception
+      * @param msg  String to add to Memento Error as an exception
+      */
     var throwError = function (msg){
         var err = new Error();
-        err.message = "ko.StateManager Error: " + msg;
+        err.message = "ko.Memento Error: " + msg;
         throw err;
     };
 
