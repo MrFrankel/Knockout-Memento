@@ -1,14 +1,14 @@
 /**
- * Created by Maor.Frankel on 12/31/13.
  * MementoStackFactory is the creator and manager for mementos stacks, it is responsible for creating stacks, destroying them and also acts as an entry point to the
- * library
+ * @name Memento Stack Factory
+ * @namespace ko
  */
-
 ko.msf = (function () {
     var mStacks = [];       //Array of stacks in the system
 
-    /***
+    /**
    * returns the array of stacks
+   * @namespace ko.msf
    * @returns {Array}
    */
     var getMStacks = function(){
@@ -79,8 +79,10 @@ ko.msf = (function () {
  */
 
 /**
- * @Constructor for memento stacks
- * @param options settings
+ * @MementoStackFactory is the creator and manager for mementos stacks, it is responsible for creating stacks, destroying them and also acts as an entry point to the
+ * @author Maor Frankel
+ * @version 1.0.0
+ * @constructor
  */
 ko.msf.mStack = function (options) {
     options = options || {};//in case no settings variable has been passed
@@ -414,7 +416,7 @@ ko.registerdObservable = function (initialValue, options) {
 };
 /**
  * @MementoStackFactory is the creator and manager for mementos stacks, it is responsible for creating stacks, destroying them and also acts as an entry point to the
- * @author <a href="mailto:Maorfrank@gmail.com">Maor Frankel</a>
+ * @author Maor Frankel
  * @version 1.0.0
  * @constructor
  */
@@ -471,10 +473,13 @@ ko.msf.mStack.Memento = function (contex,subject, value) {
 };
 
 /**
- * Created by Maor.Frankel on 12/31/13.
- * ErrorHandler is the object which handles all error's and exception in the component
+ * @MementoStackFactory
+ * @author Maor Frankel
+ * @version 1.0.0
+ * @constructor
  */
- ko.msf.ErrorHandler =  (function(){
+
+ko.msf.ErrorHandler =  (function(){
      /**
       * Throws a Memento exception
       * @param msg  String to add to Memento Error as an exception

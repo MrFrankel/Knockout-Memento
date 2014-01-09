@@ -2,7 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8538ecac-89b0-4b02-b37a-45b7aea300a4" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
+      <change type="DELETED" beforePath="D:\DEV\Knockout-Memento\dist\knockout_Memento-X1.0.0.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/ErrorHandler.js.html" afterPath="$PROJECT_DIR$/docs/ErrorHandler.js.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/Extensions.js.html" afterPath="$PROJECT_DIR$/docs/Extensions.js.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gruntfile.js" afterPath="$PROJECT_DIR$/Gruntfile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/Memento.js.html" afterPath="$PROJECT_DIR$/docs/Memento.js.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/MementoStack.js.html" afterPath="$PROJECT_DIR$/docs/MementoStack.js.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/MementoStackFactory.js.html" afterPath="$PROJECT_DIR$/docs/MementoStackFactory.js.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/index.html" afterPath="$PROJECT_DIR$/docs/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/files/MementoStackFactory_js/index.html" afterPath="$PROJECT_DIR$/reports/files/MementoStackFactory_js/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/knockout_Memento.js" afterPath="$PROJECT_DIR$/dist/knockout_Memento.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/ko.html" afterPath="$PROJECT_DIR$/docs/ko.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/ko.msf.ErrorHandler.html" afterPath="$PROJECT_DIR$/docs/ko.msf.ErrorHandler.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/ko.msf.html" afterPath="$PROJECT_DIR$/docs/ko.msf.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/ko.msf.mStack.Memento.html" afterPath="$PROJECT_DIR$/docs/ko.msf.mStack.Memento.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/ko.msf.mStack.html" afterPath="$PROJECT_DIR$/docs/ko.msf.mStack.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demos/view/rectangle.html" afterPath="$PROJECT_DIR$/demos/view/rectangle.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/report.history.js" afterPath="$PROJECT_DIR$/reports/report.history.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/files/ErrorHandler_js/report.history.js" afterPath="$PROJECT_DIR$/reports/files/ErrorHandler_js/report.history.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/files/Extensions_js/report.history.js" afterPath="$PROJECT_DIR$/reports/files/Extensions_js/report.history.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/files/MementoStackFactory_js/report.history.js" afterPath="$PROJECT_DIR$/reports/files/MementoStackFactory_js/report.history.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/files/MementoStack_js/report.history.js" afterPath="$PROJECT_DIR$/reports/files/MementoStack_js/report.history.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/files/Memento_js/report.history.js" afterPath="$PROJECT_DIR$/reports/files/Memento_js/report.history.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/report.history.json" afterPath="$PROJECT_DIR$/reports/report.history.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/files/ErrorHandler_js/report.history.json" afterPath="$PROJECT_DIR$/reports/files/ErrorHandler_js/report.history.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/files/Extensions_js/report.history.json" afterPath="$PROJECT_DIR$/reports/files/Extensions_js/report.history.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/files/MementoStackFactory_js/report.history.json" afterPath="$PROJECT_DIR$/reports/files/MementoStackFactory_js/report.history.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/files/MementoStack_js/report.history.json" afterPath="$PROJECT_DIR$/reports/files/MementoStack_js/report.history.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/files/Memento_js/report.history.json" afterPath="$PROJECT_DIR$/reports/files/Memento_js/report.history.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Knockout-Memento.iws" />
@@ -57,13 +84,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider editor-type-id="MarkdownPreviewEditor">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state line="228" column="34" selection-start="6617" selection-end="6617" vertical-scroll-proportion="3.3985891" vertical-offset="1949" max-vertical-offset="4182">
+            <state line="192" column="35" selection-start="5624" selection-end="5624" vertical-scroll-proportion="-17.92" vertical-offset="2816" max-vertical-offset="4080">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Gruntfile.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Gruntfile.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="75" column="22" selection-start="2416" selection-end="2416" vertical-scroll-proportion="1.7713249" vertical-offset="299" max-vertical-offset="2023">
               <folding />
             </state>
           </provider>
@@ -73,24 +109,6 @@
         <entry file="file://$PROJECT_DIR$/demos/view/rectangle.html">
           <provider selected="true" editor-type-id="text-editor">
             <state line="16" column="0" selection-start="819" selection-end="911" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="510">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="knockout_Memento-X1.0.0.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dist/knockout_Memento-X1.0.0.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="0" selection-start="35" selection-end="35" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="119">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MementoStack.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/MementoStack.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="0" selection-start="401" selection-end="632" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="3689">
               <folding />
             </state>
           </provider>
@@ -162,11 +180,11 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/src/Memento.js" />
         <option value="$PROJECT_DIR$/src/MementoStack.js" />
-        <option value="$PROJECT_DIR$/Gruntfile.js" />
         <option value="$PROJECT_DIR$/src/MementoStackFactory.js" />
         <option value="$PROJECT_DIR$/karma.conf.js" />
         <option value="$PROJECT_DIR$/src/ErrorHandler.js" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/Gruntfile.js" />
       </list>
     </option>
   </component>
@@ -221,6 +239,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Knockout-Memento" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Knockout-Memento" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Knockout-Memento" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dist" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -356,7 +388,15 @@
       <created>1389279063113</created>
       <updated>1389279063113</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;Conflicts:&#10;&#9;src/MementoStackFactory.js&#10;">
+      <created>1389280101136</created>
+      <updated>1389280101136</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Remove node_modules&#10;">
+      <created>1389283098379</created>
+      <updated>1389283098379</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -385,15 +425,15 @@
     <layout>
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3445652" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3445652" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19107144" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19107144" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39910814" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32826087" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3445652" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30880713" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32826087" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32826087" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -422,7 +462,8 @@
     <MESSAGE value="Fixed README.md&#10;" />
     <MESSAGE value="removed node_modules&#10;" />
     <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;Conflicts:&#10;&#9;src/MementoStackFactory.js&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/master'&#10;&#10;Conflicts:&#10;&#9;src/MementoStackFactory.js&#10;" />
+    <MESSAGE value="Remove node_modules&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove node_modules&#10;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -674,18 +715,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gruntfile.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="80" column="32" selection-start="2622" selection-end="2622" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2023" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dist/knockout_Memento-X1.0.0.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="35" selection-end="35" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="119">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/demos/view/rectangle.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="0" selection-start="819" selection-end="911" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="510">
@@ -745,7 +774,14 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="228" column="34" selection-start="6617" selection-end="6617" vertical-scroll-proportion="3.3985891" vertical-offset="1949" max-vertical-offset="4182">
+        <state line="192" column="35" selection-start="5624" selection-end="5624" vertical-scroll-proportion="-17.92" vertical-offset="2816" max-vertical-offset="4080">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gruntfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="22" selection-start="2416" selection-end="2416" vertical-scroll-proportion="1.7713249" vertical-offset="299" max-vertical-offset="2023">
           <folding />
         </state>
       </provider>

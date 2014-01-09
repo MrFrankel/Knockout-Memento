@@ -40,7 +40,7 @@ module.exports = function(grunt) {
             },
             updatePR:{
                 options: {
-                    update: {selector:'script[data-pr="true"]',attribute:'src', value:'../../dist/<%= pkg.name %>-X<%= pkg.version %>.js'}
+                    update: {selector:'script[data-pr="true"]',attribute:'src', value:'../../dist/<%= pkg.name %>-v<%= pkg.version %>.js'}
                 },
                 src: 'demos/view/rectangle.html'  //update the dist/index.html (the src index.html is copied there)
             }
@@ -66,7 +66,7 @@ module.exports = function(grunt) {
             },
             build: {
                 src: 'dist/<%= pkg.name %>.js',
-                dest: 'dist/<%= pkg.name %>-X<%= pkg.version %>.js'
+                dest: 'dist/<%= pkg.name %>-v<%= pkg.version %>.js'
             }
         },
         jshint: {
