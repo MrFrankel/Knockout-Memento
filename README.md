@@ -136,7 +136,7 @@ newStack3.triggerUndo() //testSub3() === "Lia"
     ko.mcf.getMStacks()
 
     /**
-     * Cleares all stacks in the system
+     * Clears all stacks in the system
      */
     ko.mcf.purgeMStacks()
 
@@ -155,16 +155,10 @@ newStack3.triggerUndo() //testSub3() === "Lia"
     ko.mcf.killMStack()
 
     /**
-     * Returns the first stack in the list, createts one if non have been created before
+     * Returns the first stack in the list, creates one if non have been created before
      * @returns {ko.msf.ms}
      */
     ko.mcf.getDefaultStack()
-
-    /**
-     * Returns the first stack in the list, createts one if non have been created before
-     * @returns {ko.msf.ms}
-     */
-    ko.msf.mStack()
 
 
     /**
