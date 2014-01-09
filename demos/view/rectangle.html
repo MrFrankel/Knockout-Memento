@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+<head><title>Undo demo</title></head>
+<div id="box" style="border:1px solid rgb(94, 106, 113); position:absolute" data-bind="Xc:X, Yc:Y, Wc:width, Hc:height, opacity:opacity"></div>
+
+<span>X</span><input id="xinput" style="width:50px" data-bind="value:X">
+<span>Y</span><input id="yinput" style="width:50px" data-bind="value:Y">
+<br>
+<span>width</span><input id="widthinput" style="width:50px" data-bind="value:width">
+<span>height</span><input id="heightinput" style="width:50px" data-bind="value:height">
+<br>
+<span>opacity</span><input id="opacityinput" style="width:50px" data-bind="value:opacity">
+<br>
+<button style="width:50px; height:20px" onclick="ko.StateManager.getDefaultStack().triggerUndo()">undo</button>
+<button style="width:50px; height:20px" onclick="ko.StateManager.getDefaultStack().triggerRedo()">redo</button>
+<button style="width:50px; height:20px" onclick="setOpacity(0.5, true)">setOpacity</button>
+
+<script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/3.0.0/knockout-min.js"></script><link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css">
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<script id="pr" src="../../Dist/knockout_Memento.js"></script>
+<script src="../src/app.js"></script>
+
+</html>

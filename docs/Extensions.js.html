@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Extensions.js</title>
+    
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+    
+    <h1 class="page-title">Source: Extensions.js</h1>
+    
+    
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source"><code>/**
+ * Created by Maor.Frankel on 12/31/13.
+ * Extensions are a list of ko extenders and augmented observables set as api for the component
+ */
+
+/**
+ * registerToMs is a ko extender which can be assigned to any observable making it a registered observable to a given memento stack
+ * @param target is the observable which has been extended, this is passed automatically by the extend funtion of ko
+ * @param options is an object containing possible option set by the user
+ * @returns {*} the augmented observable
+ */
+ko.extenders.registerToMS = function (target, options) {
+    options = options || {};
+    var stack = options.stack || ko.msf.getDefaultStack();
+
+    //computed observable that we will return
+    var result = ko.computed({
+        //always return the actual value
+        read: function () {
+            return target();
+        },
+        //stored in a temporary spot until commit
+        write: function (newValue) {
+            if (!result.dontReg)
+                result.registerCurrentValue();
+            target(newValue);
+        }
+    });
+    result.dontReg = false;
+    /**
+     * Tell this observable to stop registering its values to its stack
+     */
+    result.stopRegistering = function () {
+        result.dontReg = true;
+    };
+
+    /**
+     * Tell this observable to resume registering its values to its stack
+     */
+    result.resumeRegistering = function () {
+        result.dontReg = false;
+    };
+
+    /**
+     * Tell this observable to register its current value
+     */
+    result.registerCurrentValue = function () {
+        result.registerAValue(target());
+    };
+    /**
+     * Tell the observable to register a given value
+     * @param valueToReg the value to register
+     */
+    result.registerAValue = function (valueToReg) {
+        stack.stackChange(options.context, result, valueToReg);
+    };
+
+    /**
+     * Let the world know the observable has changed
+     */
+    result.valueHasMutated = function () {
+        result.notifySubscribers(target);
+    };
+
+
+    return result;
+};
+
+/**
+ * registerdObservable is a augmented observable registered  a given memento stack
+ * @param initialValue the first value to be set on the observable
+ * @param options is an object containing possible option set by the user
+ * @returns {*} the augmented observable
+ */
+
+ko.registerdObservable = function (initialValue, options) {
+    //private variables
+    var _actualValue = ko.observable(initialValue);
+    options = options || {};
+    var stack = options.stack || ko.msf.getDefaultStack();
+    //computed observable that we will return
+    var result = ko.computed({
+        //always return the actual value
+        read: function () {
+            return _actualValue();
+        },
+        //stored in a temporary spot until commit
+        write: function (newValue) {
+            if (!result.dontReg)
+                result.registerCurrentValue();
+            _actualValue(newValue);
+        }
+    });
+    /**
+     * Tell this observable to stop registering its values to its stack
+     */
+    result.stopRegistering = function () {
+        result.dontReg = true;
+    };
+
+    /**
+     * Tell this observable to resume registering its values to its stack
+     */
+    result.resumeRegistering = function () {
+        result.dontReg = false;
+    };
+
+    /**
+     * Tell this observable to register its current value
+     */
+    result.registerCurrentValue = function () {
+        result.registerAValue(_actualValue());
+    };
+    /**
+     * Tell the observable to register a given value
+     * @param valueToReg the value to register
+     */
+    result.registerAValue = function (valueToReg) {
+        stack.stackChange(options.context, result, valueToReg);
+    };
+
+    /**
+     * Let the world know the observable has changed
+     */
+    result.valueHasMutated = function () {
+        result.notifySubscribers(_actualValue);
+    };
+
+
+    return result;
+};</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Classes</h3><ul><li><a href="ko.msf.ErrorHandler.html">ErrorHandler</a></li><li><a href="ko.msf.mStack.html">mStack</a></li><li><a href="ko.msf.mStack.Memento.html">Memento</a></li></ul><h3>Namespaces</h3><ul><li><a href="ko.html">ko</a></li><li><a href="ko.msf.html">msf</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.2</a> on Tue Jan 07 2014 10:47:29 GMT+0200 (IST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
