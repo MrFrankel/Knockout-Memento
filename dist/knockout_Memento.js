@@ -64,11 +64,11 @@ ko.msf = (function () {
 
     //API
     return {
-        getMStacks:getMStacks,
-        killMStack:killMStack,
-        purgeMStacks:purgeMStacks,
+        getStacks:getMStacks,
+        killStack:killMStack,
+        purgeStacks:purgeMStacks,
         getDefaultStack:getDefaultStack,
-        createNewMStack:createNewMStack
+        createStack:createNewMStack
     };
 })();
 /**

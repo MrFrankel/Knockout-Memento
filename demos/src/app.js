@@ -1,5 +1,5 @@
 function ce(id){
-    var stack = ko.msf.createNewMStack({discardeUndefined:true, stackLimit:50})
+    var stack = ko.msf.createStack({discardeUndefined:true, stackLimit:50})
     var initObj = {context:this, stack:stack};
     this.opacity = ko.observable(1).extend({registerToMS: initObj});
     this.X = ko.observable(200).extend({registerToMS: initObj});
