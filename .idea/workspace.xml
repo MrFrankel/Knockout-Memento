@@ -1,0 +1,791 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8538ecac-89b0-4b02-b37a-45b7aea300a4" name="Default" comment="">
+      <change type="DELETED" beforePath="D:\DEV\Knockout-Memento\dist\knockout_Memento-X1.0.0.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/ErrorHandler.js.html" afterPath="$PROJECT_DIR$/docs/ErrorHandler.js.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/Extensions.js.html" afterPath="$PROJECT_DIR$/docs/Extensions.js.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Gruntfile.js" afterPath="$PROJECT_DIR$/Gruntfile.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/Memento.js.html" afterPath="$PROJECT_DIR$/docs/Memento.js.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/MementoStack.js.html" afterPath="$PROJECT_DIR$/docs/MementoStack.js.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/MementoStackFactory.js.html" afterPath="$PROJECT_DIR$/docs/MementoStackFactory.js.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/index.html" afterPath="$PROJECT_DIR$/docs/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/files/MementoStackFactory_js/index.html" afterPath="$PROJECT_DIR$/reports/files/MementoStackFactory_js/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/knockout_Memento.js" afterPath="$PROJECT_DIR$/dist/knockout_Memento.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/ko.html" afterPath="$PROJECT_DIR$/docs/ko.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/ko.msf.ErrorHandler.html" afterPath="$PROJECT_DIR$/docs/ko.msf.ErrorHandler.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/ko.msf.html" afterPath="$PROJECT_DIR$/docs/ko.msf.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/ko.msf.mStack.Memento.html" afterPath="$PROJECT_DIR$/docs/ko.msf.mStack.Memento.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/ko.msf.mStack.html" afterPath="$PROJECT_DIR$/docs/ko.msf.mStack.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/demos/view/rectangle.html" afterPath="$PROJECT_DIR$/demos/view/rectangle.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/report.history.js" afterPath="$PROJECT_DIR$/reports/report.history.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/files/ErrorHandler_js/report.history.js" afterPath="$PROJECT_DIR$/reports/files/ErrorHandler_js/report.history.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/files/Extensions_js/report.history.js" afterPath="$PROJECT_DIR$/reports/files/Extensions_js/report.history.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/files/MementoStackFactory_js/report.history.js" afterPath="$PROJECT_DIR$/reports/files/MementoStackFactory_js/report.history.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/files/MementoStack_js/report.history.js" afterPath="$PROJECT_DIR$/reports/files/MementoStack_js/report.history.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/files/Memento_js/report.history.js" afterPath="$PROJECT_DIR$/reports/files/Memento_js/report.history.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/report.history.json" afterPath="$PROJECT_DIR$/reports/report.history.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/files/ErrorHandler_js/report.history.json" afterPath="$PROJECT_DIR$/reports/files/ErrorHandler_js/report.history.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/files/Extensions_js/report.history.json" afterPath="$PROJECT_DIR$/reports/files/Extensions_js/report.history.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/files/MementoStackFactory_js/report.history.json" afterPath="$PROJECT_DIR$/reports/files/MementoStackFactory_js/report.history.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/files/MementoStack_js/report.history.json" afterPath="$PROJECT_DIR$/reports/files/MementoStack_js/report.history.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports/files/Memento_js/report.history.json" afterPath="$PROJECT_DIR$/reports/files/Memento_js/report.history.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
+    <ignored path="Knockout-Memento.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/Knockout-Memento$karma_conf_js.coverage" NAME="karma.conf.js Coverage Results" MODIFIED="1389083178278" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="KarmaJavaScriptTestRunnerCoverage" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="ExportTestResults" outputFolder="$PROJECT_DIR$" userTempatePath="" />
+  <component name="FavoritesManager">
+    <favorites_list name="Knockout-Memento" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="karma.conf.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/karma.conf.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="74" column="0" selection-start="2134" selection-end="2134" vertical-scroll-proportion="0.0" vertical-offset="1258" max-vertical-offset="1462">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demos/src/app.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="1" column="22" selection-start="36" selection-end="39" vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="2006">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="qTests.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/qTests.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="147" column="37" selection-start="6457" selection-end="6457" vertical-scroll-proportion="0.0" vertical-offset="2499" max-vertical-offset="5304">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="192" column="35" selection-start="5624" selection-end="5624" vertical-scroll-proportion="-17.92" vertical-offset="2816" max-vertical-offset="4080">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Gruntfile.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Gruntfile.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="75" column="22" selection-start="2416" selection-end="2416" vertical-scroll-proportion="1.7713249" vertical-offset="299" max-vertical-offset="2023">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="rectangle.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/demos/view/rectangle.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="0" selection-start="819" selection-end="911" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="510">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ErrorHandler.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ErrorHandler.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="36" selection-start="283" selection-end="283" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="476">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="qTests.html" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/qTests.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="93" column="26" selection-start="3450" selection-end="3450" vertical-scroll-proportion="0.0" vertical-offset="1581" max-vertical-offset="1955">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Extensions.js" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Extensions.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="31" column="7" selection-start="1179" selection-end="1179" vertical-scroll-proportion="0.0" vertical-offset="527" max-vertical-offset="2312">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindManager">
+    <FindUsagesManager>
+      <setting name="OPEN_NEW_TAB" value="false" />
+    </FindUsagesManager>
+  </component>
+  <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Maor" />
+      </list>
+    </option>
+    <option name="SYNC_SETTING" value="DONT" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="changedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/src/Stack.js" />
+        <option value="$PROJECT_DIR$/src/StateManager.js" />
+        <option value="$PROJECT_DIR$/src/MementosStack.js" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/src/MementoCareTaker.js" />
+        <option value="$PROJECT_DIR$/demos/src/app.js" />
+        <option value="$PROJECT_DIR$/coverage/Chrome 31.0.1650 (Windows 7)/src/Memento.js.html" />
+        <option value="$PROJECT_DIR$/coverage/Chrome 31.0.1650 (Windows 7)/src/MementoCareTaker.js.html" />
+        <option value="$PROJECT_DIR$/coverage/Chrome 31.0.1650 (Windows 7)/src/MementoStack.js.html" />
+        <option value="$PROJECT_DIR$/coverage/Firefox 26.0.0 (Windows 7)/src/Memento.js.html" />
+        <option value="$PROJECT_DIR$/coverage/Firefox 26.0.0 (Windows 7)/src/MementoCareTaker.js.html" />
+        <option value="$PROJECT_DIR$/src/Extensions.js" />
+        <option value="$PROJECT_DIR$/tests/qTests.js" />
+        <option value="$PROJECT_DIR$/docs/ErrorHandler.js.html" />
+        <option value="$PROJECT_DIR$/dist/knockout_Memento.js" />
+        <option value="$PROJECT_DIR$/demos/view/rectangle.html" />
+        <option value="$PROJECT_DIR$/tests/index.html" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/src/Memento.js" />
+        <option value="$PROJECT_DIR$/src/MementoStack.js" />
+        <option value="$PROJECT_DIR$/src/MementoStackFactory.js" />
+        <option value="$PROJECT_DIR$/karma.conf.js" />
+        <option value="$PROJECT_DIR$/src/ErrorHandler.js" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/Gruntfile.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsKarmaPackageDirSetting">
+    <data>D:\DEV\Knockout-Memento\node_modules\karma</data>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1696" />
+    <option name="height" value="1026" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Knockout-Memento" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Knockout-Memento" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Knockout-Memento" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Knockout-Memento" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Knockout-Memento" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dist" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="FullScreen" value="false" />
+    <property name="options.lastSelected" value="settings.github" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="recentsLimit" value="5" />
+    <property name="last_opened_file_path" value="C:/Program Files (x86)/Git/bin/git.exe" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth0" value="63" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth1" value="63" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth2" value="68" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatWidth3" value="615" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder3" value="3" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="65" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth1" value="56" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder1" value="1" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth2" value="61" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth3" value="627" />
+    <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder3" value="3" />
+    <property name="ChangesBrowser.SHOW_FLATTEN" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\DEV\Knockout-Memento" />
+      <recent name="D:\DEV\Knockout-Memento\src" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\DEV\Knockout-Memento" />
+      <recent name="D:\DEV\Knockout-Memento\tests" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Karma.karma.conf.js">
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="name" value="Dart" />
+      <option name="saveOutputToFile" value="false" />
+      <option name="showConsoleOnStdErr" value="false" />
+      <option name="showConsoleOnStdOut" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
+      <setting name="configLocationType" value="CONFIG_FILE" />
+      <setting name="settingsFile" value="" />
+      <setting name="serverType" value="INTERNAL" />
+      <setting name="preferredDebugBrowser" value="CHROME" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" singleton="true">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" working-dir="">
+      <browser start="false" url="" with-js-debugger="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="karma.conf.js" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="$PROJECT_DIR$/karma.conf.js">
+      <envs />
+      <RunnerSettings RunnerId="KarmaCoverageProgramRunner" />
+      <RunnerSettings RunnerId="KarmaJavaScriptTestRunnerDebug" />
+      <RunnerSettings RunnerId="KarmaJavaScriptTestRunnerRun" />
+      <ConfigurationWrapper RunnerId="KarmaCoverageProgramRunner" />
+      <ConfigurationWrapper RunnerId="KarmaJavaScriptTestRunnerDebug" />
+      <ConfigurationWrapper RunnerId="KarmaJavaScriptTestRunnerRun" />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Karma.karma.conf.js" />
+    </list>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
+    <option name="USER" value="" />
+    <option name="PASSWORD" value="" />
+    <option name="mySSHConnectionTimeout" value="30000" />
+    <option name="mySSHReadTimeout" value="30000" />
+    <option name="LAST_MERGED_REVISION" />
+    <option name="MERGE_DRY_RUN" value="false" />
+    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
+    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
+    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
+    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
+    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
+    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
+    <option name="FORCE_UPDATE" value="false" />
+    <option name="IGNORE_EXTERNALS" value="false" />
+    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8538ecac-89b0-4b02-b37a-45b7aea300a4" name="Default" comment="" />
+      <created>1388664261055</created>
+      <updated>1388664261055</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Fixed README.md&#10;">
+      <created>1389277198258</created>
+      <updated>1389277198258</updated>
+    </task>
+    <task id="LOCAL-00002" summary="removed node_modules&#10;">
+      <created>1389278366472</created>
+      <updated>1389278366472</updated>
+    </task>
+    <task id="LOCAL-00003" summary="removed node_modules&#10;">
+      <created>1389278798390</created>
+      <updated>1389278798390</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;Conflicts:&#10;&#9;src/MementoStackFactory.js&#10;">
+      <created>1389279063113</created>
+      <updated>1389279063113</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Merge remote-tracking branch 'origin/master'&#10;&#10;Conflicts:&#10;&#9;src/MementoStackFactory.js&#10;">
+      <created>1389280101136</created>
+      <updated>1389280101136</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Remove node_modules&#10;">
+      <created>1389283098379</created>
+      <updated>1389283098379</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="TodoView" selected-index="0">
+    <todo-panel id="selected-file">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+    <todo-panel id="default-changelist">
+      <are-packages-shown value="false" />
+      <are-modules-shown value="false" />
+      <flatten-packages value="false" />
+      <is-autoscroll-to-source value="false" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32901832" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3445652" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19107144" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39910814" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3445652" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30880713" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32826087" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32998884" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.15873016" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USERS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+    <MESSAGE value="first" />
+    <MESSAGE value="Fixed README.md&#10;" />
+    <MESSAGE value="removed node_modules&#10;" />
+    <MESSAGE value="Merge remote-tracking branch 'origin/master'&#10;&#10;Conflicts:&#10;&#9;src/MementoStackFactory.js&#10;" />
+    <MESSAGE value="Remove node_modules&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Remove node_modules&#10;" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/dist/knockout_Memento.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8449">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MementoStack.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="401" selection-end="632" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="3689">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ErrorHandler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="36" selection-start="283" selection-end="283" vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="476">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/qTests.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="93" column="26" selection-start="3450" selection-end="3450" vertical-scroll-proportion="0.0" vertical-offset="1435" max-vertical-offset="1955">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Extensions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="7" selection-start="1179" selection-end="1179" vertical-scroll-proportion="0.0" vertical-offset="527" max-vertical-offset="2312">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MementoStackFactory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="19" selection-start="809" selection-end="809" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1326">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/karma.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="0" selection-start="1633" selection-end="1633" vertical-scroll-proportion="0.0" vertical-offset="986" max-vertical-offset="1462">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="117" column="74" selection-start="4130" selection-end="4130" vertical-scroll-proportion="0.0" vertical-offset="1989" max-vertical-offset="2431">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/qTests.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="105" column="54" selection-start="4731" selection-end="4731" vertical-scroll-proportion="0.0" vertical-offset="1785" max-vertical-offset="5304">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="28" selection-start="895" selection-end="895" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="493" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gruntfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="104" column="4" selection-start="3250" selection-end="3284" vertical-scroll-proportion="0.0" vertical-offset="1768" max-vertical-offset="1972" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/mTests.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ErrorHandler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="5" selection-start="505" selection-end="505" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="425">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Extensions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="22" selection-start="2310" selection-end="2329" vertical-scroll-proportion="0.0" vertical-offset="1275" max-vertical-offset="2312">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/knockout-switch-case-master/knockout-switch-case-master/README.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="93" column="0" selection-start="4743" selection-end="4743" vertical-scroll-proportion="0.0" vertical-offset="1208" max-vertical-offset="1785" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Memento.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="33" column="15" selection-start="1027" selection-end="1027" vertical-scroll-proportion="0.0" vertical-offset="406" max-vertical-offset="969" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MementoStack.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="155" column="8" selection-start="5062" selection-end="5062" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3655">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MementoStackFactory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="25" selection-start="1180" selection-end="1180" vertical-scroll-proportion="0.0" vertical-offset="799" max-vertical-offset="1326">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/karma.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="58" column="0" selection-start="1633" selection-end="1633" vertical-scroll-proportion="0.0" vertical-offset="986" max-vertical-offset="1462">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="178" selection-start="352" selection-end="352" vertical-scroll-proportion="0.0" vertical-offset="85" max-vertical-offset="340">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="28" selection-start="895" selection-end="895" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="493" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gruntfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="22" selection-start="2377" selection-end="2377" vertical-scroll-proportion="0.0" vertical-offset="1275" max-vertical-offset="1836" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/mTests.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="221" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ErrorHandler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="5" selection-start="505" selection-end="505" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="425">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Extensions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="81" column="17" selection-start="2594" selection-end="2594" vertical-scroll-proportion="0.0" vertical-offset="1377" max-vertical-offset="2312">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="32" selection-start="696" selection-end="696" vertical-scroll-proportion="-13.076923" vertical-offset="0" max-vertical-offset="595" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coverage/Chrome 31.0.1650 (Windows 7)/src/Memento.js.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="288" column="35" selection-start="9746" selection-end="9746" vertical-scroll-proportion="-6.8461537" vertical-offset="4718" max-vertical-offset="7072" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coverage/Chrome 31.0.1650 (Windows 7)/src/MementoCareTaker.js.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="298" column="34" selection-start="9977" selection-end="9977" vertical-scroll-proportion="-7.0384617" vertical-offset="4883" max-vertical-offset="7378" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coverage/Chrome 31.0.1650 (Windows 7)/src/MementoStack.js.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="648" column="37" selection-start="20181" selection-end="20181" vertical-scroll-proportion="-6.769231" vertical-offset="10840" max-vertical-offset="13702" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coverage/Firefox 26.0.0 (Windows 7)/src/Memento.js.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="288" column="35" selection-start="9746" selection-end="9746" vertical-scroll-proportion="-6.576923" vertical-offset="4725" max-vertical-offset="7072" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coverage/Firefox 26.0.0 (Windows 7)/src/MementoStack.js.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="534" column="7" selection-start="15685" selection-end="15685" vertical-scroll-proportion="1.5428051" vertical-offset="8231" max-vertical-offset="13702" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coverage/Firefox 26.0.0 (Windows 7)/src/MementoCareTaker.js.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="298" column="34" selection-start="9977" selection-end="9977" vertical-scroll-proportion="0.322807" vertical-offset="4882" max-vertical-offset="7378" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/mTests.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="571" />
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/knockout-switch-case-master/knockout-switch-case-master/README.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="0" selection-start="3561" selection-end="3561" vertical-scroll-proportion="-5.4" vertical-offset="1106" max-vertical-offset="1785" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/npm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/scripts/linenumber.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/knockout_Memento.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="102">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demos/src/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="1" column="22" selection-start="36" selection-end="39" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2006">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="39" selection-start="736" selection-end="736" vertical-scroll-proportion="-10.461538" vertical-offset="0" max-vertical-offset="493" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MementoStack.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="0" selection-start="401" selection-end="632" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3604">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/demos/view/rectangle.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="16" column="0" selection-start="819" selection-end="911" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="510">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Memento.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="231" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1071" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MementoStackFactory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="15" selection-start="362" selection-end="362" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1326">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Extensions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="31" column="7" selection-start="1179" selection-end="1179" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2261">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/karma.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="74" column="0" selection-start="2134" selection-end="2134" vertical-scroll-proportion="0.0" vertical-offset="912" max-vertical-offset="1445">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ErrorHandler.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="36" selection-start="283" selection-end="283" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="476">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/qTests.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="93" column="26" selection-start="3450" selection-end="3450" vertical-scroll-proportion="0.0" vertical-offset="1435" max-vertical-offset="1955">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/qTests.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="147" column="37" selection-start="6457" selection-end="6457" vertical-scroll-proportion="0.0" vertical-offset="2125" max-vertical-offset="5304">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="192" column="35" selection-start="5624" selection-end="5624" vertical-scroll-proportion="-17.92" vertical-offset="2816" max-vertical-offset="4080">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gruntfile.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="22" selection-start="2416" selection-end="2416" vertical-scroll-proportion="1.7713249" vertical-offset="299" max-vertical-offset="2023">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
+
