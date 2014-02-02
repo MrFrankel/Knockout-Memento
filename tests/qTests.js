@@ -119,7 +119,7 @@ test("Test stack Api", function() {
 });
 
 test("test msf subscribe multi to undo/redo, Should only create 2 assertions", function() {
-    var stack = msf.createNewMStack();
+    var stack = msf.createStack();
     stack.stackChange(dummyContext,dummyContext.testSubject, initValue);
     var sub1 = stack.subscribeTo(function(data){
         ok(data.context === dummyContext, "context 1 return on call back")
@@ -144,16 +144,16 @@ module("msf Tests",{
     }});
 
 test("test msf creation of stacks", function() {
-   msf.purgeMStacks();
-   var stack = msf.createNewMStack();
+   msf.purgeStacks();
+   var stack = msf.createStack();
    ok(stack instanceof  stackConstructor, "msf created a stack");
-   strictEqual(msf.getMStacks().length,1, "msf returns stacksArray");
-   msf.killMStack(stack);
-   strictEqual(msf.getMStacks().length,0, "msf returns stacksArray");
+   strictEqual(msf.getStacks().length,1, "msf returns stacksArray");
+   msf.killStack(stack);
+   strictEqual(msf.getStacks().length,0, "msf returns stacksArray");
 });
 
 test("test msf subscribe to undo/redo", function() {
-    var stack = msf.createNewMStack();
+    var stack = msf.createStack();
     stack.stackChange(dummyContext,dummyContext.testSubject, initValue);
     var sub = stack.subscribeTo(function(data){
        ok(data.context === dummyContext, "context return on call back")
@@ -168,7 +168,7 @@ module("Extension test",{
     }});
 
 test("Test extension api",function(){
-    var stack = ko.msf.createNewMStack();
+    var stack = ko.msf.createStack();
     var initObj = {context:this, stack:stack};
     var tester = ko.observable(initValue).extend({registerToMS: initObj});
     tester.stopRegistering();
@@ -191,7 +191,7 @@ test("Test extension api",function(){
 });
 
 test("Test augmented api",function(){
-    var stack = ko.msf.createNewMStack();
+    var stack = ko.msf.createStack();
     var initObj = {context:this, stack:stack};
     var tester = ko.registerdObservable(initValue, initObj);
     tester.stopRegistering();
@@ -219,7 +219,7 @@ module("FullFlows",{
     }});
 
 test("test a full flow on single observable",function(){
-    var stack = ko.msf.createNewMStack();
+    var stack = ko.msf.createStack();
     var initObj = {context:dummyContext, stack:stack};
     var tester = ko.observable(initValue).extend({registerToMS: initObj});
     tester(newValue);
@@ -233,7 +233,7 @@ test("test a full flow on single observable",function(){
 });
 
 test("test startListening and stop listening",function(){
-    var stack = ko.msf.createNewMStack();
+    var stack = ko.msf.createStack();
     var initObj = {context:this, stack:stack};
     var tester = ko.observable(initValue).extend({registerToMS: initObj});
     stack.stopListening();
@@ -247,7 +247,7 @@ test("test startListening and stop listening",function(){
 });
 
 test("test sequencing and nested sequencing",function(){
-    var stack = ko.msf.createNewMStack();
+    var stack = ko.msf.createStack();
     var initObj = {context:this, stack:stack};
     var tester = ko.observable(initValue).extend({registerToMS: initObj});
     stack.startSequencing();
@@ -262,7 +262,7 @@ test("test sequencing and nested sequencing",function(){
 });
 
 test("test multi observables",function(){
-    var stack = ko.msf.createNewMStack();
+    var stack = ko.msf.createStack();
     var initObj = {context:{}, stack:stack};
     var tester = ko.observable(initValue).extend({registerToMS: initObj});
     var tester2 = ko.observable(initValue*2).extend({registerToMS: initObj});
@@ -276,8 +276,8 @@ test("test multi observables",function(){
 });
 
 test("test multi stacks",function(){
-    var stack = ko.msf.createNewMStack();
-    var stack2 = ko.msf.createNewMStack();
+    var stack = ko.msf.createStack();
+    var stack2 = ko.msf.createStack();
     var initObj = {context:{}, stack:stack};
     var initObj2 = {context:{}, stack:stack2};
     var tester = ko.observable(initValue).extend({registerToMS: initObj});
@@ -293,7 +293,7 @@ test("test multi stacks",function(){
 });
 
 test("test subscriptions, should be one assertions",function(){
-    var stack = ko.msf.createNewMStack();
+    var stack = ko.msf.createStack();
     var initObj = {context:dummyContext, stack:stack};
     var tester = ko.observable(initValue).extend({registerToMS: initObj});
     var sub = stack.subscribeTo(function (data){

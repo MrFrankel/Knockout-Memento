@@ -11,14 +11,14 @@ ko.msf = (function () {
    * @namespace ko.msf
    * @returns {Array}
    */
-    var getMStacks = function(){
+    var getStacks = function(){
         return mStacks;
     };
 
     /**
      * Cleares all stacks in the system
      */
-    var purgeMStacks = function(){
+    var purgeStacks = function(){
         mStacks.forEach(function(stack){
             stack.clearForGc();
         });
@@ -30,7 +30,7 @@ ko.msf = (function () {
      * @param options set of stack options
      * @returns {ko.msf.mStack}
      */
-    var createNewMStack = function(options){
+    var createStack = function(options){
         var newStack = new ko.msf.mStack(options);
         mStacks.push(newStack);
         return newStack;
@@ -42,7 +42,7 @@ ko.msf = (function () {
      * @param stack
      * @returns {boolean}
      */
-    var killMStack = function(stack){
+    var killStack = function(stack){
         var indexOf = mStacks.indexOf(stack);
         if (indexOf == -1)
             return false;
@@ -56,18 +56,15 @@ ko.msf = (function () {
      * @returns {ko.msf.ms}
      */
     var getDefaultStack = function(){
-        if(mStacks.length > 0)
-            return mStacks[0];
-        else
-            return createNewMStack();
+        return mStacks.length ? mStacks[0] :createStack();
     };
 
     //API
     return {
-        getMStacks:getMStacks,
-        killMStack:killMStack,
-        purgeMStacks:purgeMStacks,
-        getDefaultStack:getDefaultStack,
-        createNewMStack:createNewMStack
+        getStacks: getStacks,
+        killStack: killStack,
+        purgeStacks: purgeStacks,
+        getDefaultStack: getDefaultStack,
+        createStack: createStack
     };
 })();
