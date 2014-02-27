@@ -209,4 +209,12 @@ ko.msf.mStack = function (options) {
          pushBuffer(undoStack, seqBufferArray.reverse());
     };
 
+    this.hasUndos = function () {
+        return (undoStack.length > 0);
+    };
+
+    this.hasRedos = function () {
+        return (redoStack.length > 0);
+    };
+
 };

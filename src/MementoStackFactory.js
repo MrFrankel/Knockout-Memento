@@ -14,7 +14,14 @@ ko.msf = (function () {
     var getStacks = function(){
         return mStacks;
     };
-
+    /**
+     * Cleares all stacks in the system
+     */
+    var clearStacks = function () {
+        mStacks.forEach(function (stack) {
+            stack.reInit();
+        });
+    };
     /**
      * Cleares all stacks in the system
      */
@@ -59,12 +66,27 @@ ko.msf = (function () {
         return mStacks.length ? mStacks[0] :createStack();
     };
 
+    /**
+     * Returns the last stack in the list
+     * @returns {ko.msf.ms}
+     */
+    var getLastStack = function () {
+        if (mStacks.length > 0) {
+            return mStacks[mStacks.length - 1];
+        }
+        else {
+            return undefined;
+        }
+    };
+
     //API
     return {
         getStacks: getStacks,
         killStack: killStack,
         purgeStacks: purgeStacks,
+        clearStacks: clearStacks,
         getDefaultStack: getDefaultStack,
+        getLastStack:getLastStack,
         createStack: createStack
     };
 })();

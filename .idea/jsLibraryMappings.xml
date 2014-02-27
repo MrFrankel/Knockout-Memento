@@ -5,3 +5,4 @@
     <file url="PROJECT" libraries="{jquery, knockout, qUnit}" />
   </component>
 </project>
+
