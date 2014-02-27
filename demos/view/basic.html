@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Memento Demo Basic</title>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<span>Value:</span><input data-bind="value:inputVal">
+<button style="width:100px" onclick="ko.msf.getDefaultStack().triggerUndo()">Undo</button>
+<button style="width:100px" onclick="ko.msf.getDefaultStack().triggerRedo()">Redo</button>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/knockout/3.0.0/knockout-min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../../dist/knockout_Memento.js"></script>
+<script type="text/javascript" src="../src/basic.js"></script>
+</body>
+</html>

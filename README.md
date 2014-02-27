@@ -11,9 +11,7 @@ These states can then be reinstated by triggering undo/redo on any given stack.
 ##Getting Started
 ```javascript
 //start using it!
-var newStack = ko.msf.createNewMStack({stackLimit:50,discardUndefined:false });
-var initObj = {context:this, stack:newStack};
-var testSub = ko.observable(50).extend({registerToMS: initObj});
+var testSub = ko.observable(50).extend({registerToMS: null});
 
 testSub(100);
 testSub(150);
@@ -26,10 +24,8 @@ newStack.triggerRedo(); //testSub() === 100
 ##Multiple observables, one stack
 ```javascript
 //start using it!
-var newStack = ko.msf.createNewMStack({stackLimit:50,discardUndefined:false });
-var initObj = {context:this, stack:newStack};
-var testSub = ko.observable(50).extend({registerToMS: initObj});
-var testSub2 = ko.observable("first").extend({registerToMS: initObj});
+var testSub = ko.observable(50).extend({registerToMS: null});
+var testSub = ko.observable(50).extend({registerToMS: null});
 
 testSub(100);
 testSub2("second");
@@ -44,12 +40,10 @@ newStack.triggerRedo(); //testSub2() === "second"
 ```javascript
 //start using it!
 var newStack = ko.msf.createNewMStack({stackLimit:50,discardUndefined:false });
-var newStack3 = ko.msf.createNewMStack({stackLimit:50,discardUndefined:false });
-var initObj = {context:this, stack:newStack};
-var initObj3 = {context:this, stack:newStack3};
-var testSub = ko.observable(50).extend({registerToMS: initObj});
-var testSub2 = ko.observable("first").extend({registerToMS: initObj});
-var testSub3 = ko.observable("Maor").extend({registerToMS: initObj3});
+var newStack2 = ko.msf.createNewMStack({stackLimit:50,discardUndefined:false });
+var testSub = ko.observable(50).extend({registerToMS: {context:this, stack:newStack}});
+var testSub2 = ko.observable("first").extend({registerToMS: {context:this, stack:newStack}});
+var testSub3 = ko.observable("Maor").extend({registerToMS: {context:this, stack:newStack2}});
 
 testSub(100);
 testSub2("second");
@@ -59,18 +53,16 @@ testSub2("third");
 
 newStack.triggerUndo(); //testSub() === 100
 newStack.triggerUndo(); //testSub2() === "second"
-newStack3.triggerUndo() //testSub3() === "Maor"
+newStack2.triggerUndo() //testSub3() === "Maor"
 newStack.triggerRedo(); //testSub2() === "third"
-newStack3.triggerUndo() //testSub3() === "Lia"
+newStack2.triggerUndo() //testSub3() === "Lia"
 ```
 
 ##Sequencing changes
    ```javascript
    //start using it!
-   var newStack = ko.msf.createNewMStack({stackLimit:50,discardUndefined:false });
-   var initObj = {context:this, stack:newStack};
-   var testSub = ko.observable(50).extend({registerToMS: initObj});
-   var testSub2 = ko.observable("first").extend({registerToMS: initObj});
+   var testSub = ko.observable(50).extend({registerToMS: null});
+   var testSub2 = ko.observable("first").extend({registerToMS: null});
 
    newStack.startSequencing();
    testSub(100);
@@ -133,19 +125,19 @@ newStack3.triggerUndo() //testSub3() === "Lia"
     * returns the array of stacks
     * @returns {Array}
     */
-    ko.mcf.getMStacks()
+    ko.msf.getStacks()
 
     /**
      * Clears all stacks in the system
      */
-    ko.mcf.purgeMStacks()
+    ko.msf.purgeStacks()
 
     /**
      * Creates a new stack and returns it
      * @param options set of stack options
      * @returns {ko.msf.mStack}
      */
-    ko.mcf.createNewMStack()
+    ko.mcf.createNewStack()
 
     /**
      * Destroys a given stack

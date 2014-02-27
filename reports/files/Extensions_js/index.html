@@ -49,7 +49,7 @@
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC"></i></h2>
-      <p class="stat">120</p>
+      <p class="stat">121</p>
     </div>
   </div>
   <div class="row historical">
@@ -113,8 +113,9 @@ ko.extenders.registerToMS = function (target, options) {
         },
         //stored in a temporary spot until commit
         write: function (newValue) {
-            if (!result.dontReg)
+            if (!result.dontReg) {
                 result.registerCurrentValue();
+            }
             target(newValue);
         }
     });

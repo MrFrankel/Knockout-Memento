@@ -11,14 +11,21 @@ ko.msf = (function () {
    * @namespace ko.msf
    * @returns {Array}
    */
-    var getMStacks = function(){
+    var getStacks = function(){
         return mStacks;
     };
-
     /**
      * Cleares all stacks in the system
      */
-    var purgeMStacks = function(){
+    var clearStacks = function () {
+        mStacks.forEach(function (stack) {
+            stack.reInit();
+        });
+    };
+    /**
+     * Cleares all stacks in the system
+     */
+    var purgeStacks = function(){
         mStacks.forEach(function(stack){
             stack.clearForGc();
         });
@@ -30,7 +37,7 @@ ko.msf = (function () {
      * @param options set of stack options
      * @returns {ko.msf.mStack}
      */
-    var createNewMStack = function(options){
+    var createStack = function(options){
         var newStack = new ko.msf.mStack(options);
         mStacks.push(newStack);
         return newStack;
@@ -42,7 +49,7 @@ ko.msf = (function () {
      * @param stack
      * @returns {boolean}
      */
-    var killMStack = function(stack){
+    var killStack = function(stack){
         var indexOf = mStacks.indexOf(stack);
         if (indexOf == -1)
             return false;
@@ -56,19 +63,31 @@ ko.msf = (function () {
      * @returns {ko.msf.ms}
      */
     var getDefaultStack = function(){
-        if(mStacks.length > 0)
-            return mStacks[0];
-        else
-            return createNewMStack();
+        return mStacks.length ? mStacks[0] :createStack();
+    };
+
+    /**
+     * Returns the last stack in the list
+     * @returns {ko.msf.ms}
+     */
+    var getLastStack = function () {
+        if (mStacks.length > 0) {
+            return mStacks[mStacks.length - 1];
+        }
+        else {
+            return undefined;
+        }
     };
 
     //API
     return {
-        getStacks:getMStacks,
-        killStack:killMStack,
-        purgeStacks:purgeMStacks,
-        getDefaultStack:getDefaultStack,
-        createStack:createNewMStack
+        getStacks: getStacks,
+        killStack: killStack,
+        purgeStacks: purgeStacks,
+        clearStacks: clearStacks,
+        getDefaultStack: getDefaultStack,
+        getLastStack:getLastStack,
+        createStack: createStack
     };
 })();
 /**
@@ -282,6 +301,14 @@ ko.msf.mStack = function (options) {
          pushBuffer(undoStack, seqBufferArray.reverse());
     };
 
+    this.hasUndos = function () {
+        return (undoStack.length > 0);
+    };
+
+    this.hasRedos = function () {
+        return (redoStack.length > 0);
+    };
+
 };
 /**
  * Created by Maor.Frankel on 12/31/13.
@@ -306,8 +333,9 @@ ko.extenders.registerToMS = function (target, options) {
         },
         //stored in a temporary spot until commit
         write: function (newValue) {
-            if (!result.dontReg)
+            if (!result.dontReg) {
                 result.registerCurrentValue();
+            }
             target(newValue);
         }
     });
@@ -414,6 +442,7 @@ ko.registerdObservable = function (initialValue, options) {
 
     return result;
 };
+
 /**
  * @MementoStackFactory is the creator and manager for mementos stacks, it is responsible for creating stacks, destroying them and also acts as an entry point to the
  * @author Maor Frankel
