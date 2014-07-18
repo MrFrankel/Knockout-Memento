@@ -45,11 +45,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"></i></a></h2>
-      <p class="stat">78.56</p>
+      <p class="stat">78.58</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC"></i></h2>
-      <p class="stat">121</p>
+      <p class="stat">171</p>
     </div>
   </div>
   <div class="row historical">
@@ -63,11 +63,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty"></i></a></h2>
-      <p class="stat">25.30</p>
+      <p class="stat">28.95</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs"></i></a></h2>
-      <p class="stat">0.47</p>
+      <p class="stat">0.70</p>
     </div>
   </div>
 </div>
@@ -159,6 +159,56 @@ ko.extenders.registerToMS = function (target, options) {
     return result;
 };
 
+/**
+ * registerArrayToMS is a ko extender which can be assigned to any observable array making it a registered observableArray to a given memento stack
+ * @param target is the observable which has been extended, this is passed automatically by the extend funtion of ko
+ * @param options is an object containing possible option set by the user
+ * @returns {*} the augmented observable
+ */
+ko.extenders.registerArrayToMS = function (target, options) {
+    options = options || {};
+    var stack = options.stack || ko.msf.getDefaultStack();
+
+    //computed observable that we will return
+    target.subscribe(function (oldVal){
+        if (!target.dontReg) {
+            target.registerAValue(oldVal);
+        }
+    }, this, &quot;beforeChange&quot;);
+
+    target.dontReg = false;
+    /**
+     * Tell this observable to stop registering its values to its stack
+     */
+    target.stopRegistering = function () {
+        result.dontReg = true;
+    };
+
+    /**
+     * Tell this observable to resume registering its values to its stack
+     */
+    target.resumeRegistering = function () {
+        result.dontReg = false;
+    };
+
+    /**
+     * Tell this observable to register its current value
+     */
+    target.registerCurrentValue = function () {
+        result.registerAValue(target());
+    };
+    /**
+     * Tell the observable to register a given value
+     * @param valueToReg the value to register
+     */
+    target.registerAValue = function (valueToReg) {
+        var copyVal = valueToReg.slice(0);
+        stack.stackChange(options.context, target, copyVal);
+    };
+
+
+    return target;
+};
 /**
  * registerdObservable is a augmented observable registered  a given memento stack
  * @param initialValue the first value to be set on the observable

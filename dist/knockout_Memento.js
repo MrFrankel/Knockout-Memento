@@ -380,6 +380,56 @@ ko.extenders.registerToMS = function (target, options) {
 };
 
 /**
+ * registerArrayToMS is a ko extender which can be assigned to any observable array making it a registered observableArray to a given memento stack
+ * @param target is the observable which has been extended, this is passed automatically by the extend funtion of ko
+ * @param options is an object containing possible option set by the user
+ * @returns {*} the augmented observable
+ */
+ko.extenders.registerArrayToMS = function (target, options) {
+    options = options || {};
+    var stack = options.stack || ko.msf.getDefaultStack();
+
+    //computed observable that we will return
+    target.subscribe(function (oldVal){
+        if (!target.dontReg) {
+            target.registerAValue(oldVal);
+        }
+    }, this, "beforeChange");
+
+    target.dontReg = false;
+    /**
+     * Tell this observable to stop registering its values to its stack
+     */
+    target.stopRegistering = function () {
+        result.dontReg = true;
+    };
+
+    /**
+     * Tell this observable to resume registering its values to its stack
+     */
+    target.resumeRegistering = function () {
+        result.dontReg = false;
+    };
+
+    /**
+     * Tell this observable to register its current value
+     */
+    target.registerCurrentValue = function () {
+        result.registerAValue(target());
+    };
+    /**
+     * Tell the observable to register a given value
+     * @param valueToReg the value to register
+     */
+    target.registerAValue = function (valueToReg) {
+        var copyVal = valueToReg.slice(0);
+        stack.stackChange(options.context, target, copyVal);
+    };
+
+
+    return target;
+};
+/**
  * registerdObservable is a augmented observable registered  a given memento stack
  * @param initialValue the first value to be set on the observable
  * @param options is an object containing possible option set by the user

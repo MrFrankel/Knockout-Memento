@@ -14,7 +14,9 @@ var mementoConstructor = stackConstructor.Memento;
 var mockObservable = function (){
     dummyContext = {};
     initValue = 20;
+    initArrayValue = ["Maor", "Sagiv", "Zachi"];
     newValue = 50;
+    newValueArray = "Keisi";
     dummyContext.testSubject = ko.observable(initValue);
 }
 module("knockout_memento testing")
@@ -304,4 +306,44 @@ test("test subscriptions, should be one assertions",function(){
     stack.triggerUndo();
     sub.dispose();
     stack.triggerUndo();
+});
+
+
+test("test observableArray",function(){
+    var stack = ko.msf.createStack();
+    var initObj = {context:dummyContext, stack:stack};
+    var tester = ko.observableArray(initArrayValue).extend({registerArrayToMS: initObj});
+    tester.push(newValueArray);
+    tester.push(newValueArray);
+    ok(tester().length == 5, "array length should be 5");
+    ok(tester()[4] === "Keisi", "array lastMember should be Keisi");
+    stack.triggerUndo();
+    ok(tester()[3] === "Keisi", "array lastMember should be Keisi");
+    stack.triggerUndo();
+    ok(tester().length == 3, "array length should be 3");
+    ok(tester()[2] === "Zachi", "array member 2 should be Zachi");
+    ok(tester()[1] === "Sagiv", "array member 1 should be Sagiv");
+    ok(tester()[0] === "Maor", "array member 0 should be Maor");
+
+});
+
+
+test("test observableArray position Change",function(){
+    var stack = ko.msf.createStack();
+    var initObj = {context:dummyContext, stack:stack};
+    var tester = ko.observableArray(initArrayValue).extend({registerArrayToMS: initObj});
+    var tempVal = tester()[1];
+    stack.startSequencing();
+    tester.replace(tester()[1], tester()[0]);
+    tester.replace(tester()[0], tempVal);
+    stack.stopSequencing();
+    ok(tester()[0] == "Sagiv", "array member 0 should be Sagiv");
+    ok(tester()[1] == "Maor", "array member 1 should be Maor");
+    stack.triggerUndo();
+    ok(tester()[0] == "Maor", "array member 0 should be Maor");
+    ok(tester()[1] == "Sagiv", "array member 1 should be Sagiv");
+
+
+
+
 });
