@@ -145,7 +145,7 @@ ko.msf.mStack = function (options) {
 
         var buffer = [];
         mementos.forEach(function (memento) {
-            buffer.push(memento.duplicate());
+            buffer.unshift(memento.duplicate());
             updating = true;
             memento.trigger(subscribers);
             updating = false;
