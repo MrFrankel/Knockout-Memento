@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Memento Demo Multiple Sequence</title>
+    <title>Memento Demo Basic</title>
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<span>Size:</span><input onchange="changeSize(this)" placeholder="100">
+<span>Add Value:</span><input onchange="addToList(this.value)">
 <br/>
-<br/>
-<button style="width:50px" onclick="stack.triggerUndo()">Undo</button>
-<button style="width:50px" onclick="stack.triggerRedo()">Redo</button>
-<br/>
-<br/>
-<br/>
-<br/>
-<div id="box" data-bind="style: {width: boxWidth() + 'px', height: boxHeight() + 'px'}" style="border:1px solid rgb(94, 106, 113); position:absolute"></div>
+<ul data-bind="foreach: list">
+    <li data-bind="text:$data"></li>
+</ul>
 
-
-
+<button style="width:100px" onclick="ko.msf.getDefaultStack().triggerUndo()">Undo</button>
+<button style="width:100px" onclick="ko.msf.getDefaultStack().triggerRedo()">Redo</button>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/knockout/2.1.0/knockout-min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
 <script type="text/javascript" src="../../dist/knockout_Memento.js"></script>
-<script type="text/javascript" src="../src/StackSequence.js"></script>
+<script type="text/javascript" src="../src/basicArray.js"></script>
+<script>
+    function addToList(newVal){
+        viewModel.list.push(newVal);
+    }
+
+</script>
 </body>
 </html>
