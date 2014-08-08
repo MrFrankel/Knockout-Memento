@@ -45,11 +45,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Maintainability <a href="http://blogs.msdn.com/b/codeanalysis/archive/2007/11/20/maintainability-index-range-and-meaning.aspx"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="A value between 0 and 100 that represents the relative ease of maintaining the code. A high value means better maintainability." data-original-title="Maintainability Index"></i></a></h2>
-      <p class="stat">75.52</p>
+      <p class="stat">75.94</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Lines of code <i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Source Lines of Code / Logical Lines of Code" data-original-title="SLOC/LSLOC"></i></h2>
-      <p class="stat">87</p>
+      <p class="stat">93</p>
     </div>
   </div>
   <div class="row historical">
@@ -63,11 +63,11 @@
   <div class="row">
     <div class="col-md-6">
       <h2 class="header">Difficulty  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="The difficulty measure is related to the difficulty of the program to write or understand." data-original-title="Difficulty"></i></a></h2>
-      <p class="stat">27.70</p>
+      <p class="stat">26.83</p>
     </div>
     <div class="col-md-6">
       <h2 class="header">Estimated Errors  <a href="http://en.wikipedia.org/wiki/Halstead_complexity_measures"><i class="icon icon-info-sign" rel="popover" data-placement="top" data-trigger="hover" data-content="Halstead's delivered bugs is an estimate for the number of errors in the implementation." data-original-title="Delivered Bugs"></i></a></h2>
-      <p class="stat">0.31</p>
+      <p class="stat">0.39</p>
     </div>
   </div>
 </div>
@@ -96,7 +96,7 @@
  * @namespace ko
  */
 ko.msf = (function () {
-    var mStacks = [];       //Array of stacks in the system
+    var mStacks = ko.observableArray([]);       //Array of stacks in the system
 
     /**
    * returns the array of stacks
@@ -104,13 +104,13 @@ ko.msf = (function () {
    * @returns {Array}
    */
     var getStacks = function(){
-        return mStacks;
+        return mStacks();
     };
     /**
      * Cleares all stacks in the system
      */
     var clearStacks = function () {
-        mStacks.forEach(function (stack) {
+        mStacks().forEach(function (stack) {
             stack.reInit();
         });
     };
@@ -118,10 +118,10 @@ ko.msf = (function () {
      * Cleares all stacks in the system
      */
     var purgeStacks = function(){
-        mStacks.forEach(function(stack){
+        mStacks().forEach(function(stack){
             stack.clearForGc();
         });
-        mStacks.length = 0;
+        mStacks.removeAll();
     };
 
     /**
@@ -155,7 +155,7 @@ ko.msf = (function () {
      * @returns {ko.msf.ms}
      */
     var getDefaultStack = function(){
-        return mStacks.length ? mStacks[0] :createStack();
+        return mStacks().length ? mStacks()[0] :createStack();
     };
 
     /**
@@ -163,14 +163,19 @@ ko.msf = (function () {
      * @returns {ko.msf.ms}
      */
     var getLastStack = function () {
-        if (mStacks.length &gt; 0) {
-            return mStacks[mStacks.length - 1];
+        if (mStacks().length &gt; 0) {
+            return mStacks()[mStacks().length - 1];
         }
         else {
             return undefined;
         }
     };
 
+    var isDirty = ko.computed(function () {
+       return mStacks().some(function (mStack){
+           return mStack.isDirty();
+        });
+    });
     //API
     return {
         getStacks: getStacks,
@@ -179,7 +184,8 @@ ko.msf = (function () {
         clearStacks: clearStacks,
         getDefaultStack: getDefaultStack,
         getLastStack:getLastStack,
-        createStack: createStack
+        createStack: createStack,
+        isDirty: isDirty
     };
 })();</textarea>
   </div>

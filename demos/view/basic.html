@@ -5,9 +5,12 @@
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<span>Value:</span><input data-bind="value:inputVal">
+<span>UndoValue:</span><input data-bind="value:undoinputVal">
+<span>DirtyValue:</span><input data-bind="value:dirtInputVal">
+<br/>
 <button style="width:100px" onclick="ko.msf.getDefaultStack().triggerUndo()">Undo</button>
 <button style="width:100px" onclick="ko.msf.getDefaultStack().triggerRedo()">Redo</button>
+<input type="checkbox" data-bind="checked:ko.msf.isDirty"/>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/knockout/2.1.0/knockout-min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>

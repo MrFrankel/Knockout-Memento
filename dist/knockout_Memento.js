@@ -4,7 +4,7 @@
  * @namespace ko
  */
 ko.msf = (function () {
-    var mStacks = [];       //Array of stacks in the system
+    var mStacks = ko.observableArray([]);       //Array of stacks in the system
 
     /**
    * returns the array of stacks
@@ -12,13 +12,13 @@ ko.msf = (function () {
    * @returns {Array}
    */
     var getStacks = function(){
-        return mStacks;
+        return mStacks();
     };
     /**
      * Cleares all stacks in the system
      */
     var clearStacks = function () {
-        mStacks.forEach(function (stack) {
+        mStacks().forEach(function (stack) {
             stack.reInit();
         });
     };
@@ -26,10 +26,10 @@ ko.msf = (function () {
      * Cleares all stacks in the system
      */
     var purgeStacks = function(){
-        mStacks.forEach(function(stack){
+        mStacks().forEach(function(stack){
             stack.clearForGc();
         });
-        mStacks.length = 0;
+        mStacks.removeAll();
     };
 
     /**
@@ -63,7 +63,7 @@ ko.msf = (function () {
      * @returns {ko.msf.ms}
      */
     var getDefaultStack = function(){
-        return mStacks.length ? mStacks[0] :createStack();
+        return mStacks().length ? mStacks()[0] :createStack();
     };
 
     /**
@@ -71,14 +71,19 @@ ko.msf = (function () {
      * @returns {ko.msf.ms}
      */
     var getLastStack = function () {
-        if (mStacks.length > 0) {
-            return mStacks[mStacks.length - 1];
+        if (mStacks().length > 0) {
+            return mStacks()[mStacks().length - 1];
         }
         else {
             return undefined;
         }
     };
 
+    var isDirty = ko.computed(function () {
+       return mStacks().some(function (mStack){
+           return mStack.isDirty();
+        });
+    });
     //API
     return {
         getStacks: getStacks,
@@ -87,7 +92,8 @@ ko.msf = (function () {
         clearStacks: clearStacks,
         getDefaultStack: getDefaultStack,
         getLastStack:getLastStack,
-        createStack: createStack
+        createStack: createStack,
+        isDirty: isDirty
     };
 })();
 /**
@@ -119,6 +125,7 @@ ko.msf.mStack = function (options) {
     var seqBufferArray = [];          //Buffer array holding all sequenced actions to be stored as a single undo/redo
     var sequencingMode = 0  ;         //Flag stating all current changes registering should be stacked
     var updating = false;             //Flag stating an update is in progress and new stack changed should not be registered
+    var dirty  =ko.observable(false);
     
     /**
      * Pushes a buffer into a given stack
@@ -152,7 +159,7 @@ ko.msf.mStack = function (options) {
         }.bind(this));
         oStack.push(buffer.splice(0));//Push duplicate memento to mirror stack
         buffer.length = 0;
-
+        dirty(undoStack.length > 0);
         return true;
     };
 
@@ -190,6 +197,7 @@ ko.msf.mStack = function (options) {
          seqBufferArray.length = 0;
          updating = false;
          sequencingMode = false;
+         dirty(false);
     };
 
     /**
@@ -260,6 +268,7 @@ ko.msf.mStack = function (options) {
              return true;
 
          pushBuffer(undoStack, seqBufferArray);
+         dirty(true);
 
           return true;
      };
@@ -308,6 +317,10 @@ ko.msf.mStack = function (options) {
     this.hasRedos = function () {
         return (redoStack.length > 0);
     };
+
+    this.isDirty = ko.computed(function (){
+        return dirty();
+    });
 
 };
 /**

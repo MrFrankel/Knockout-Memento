@@ -4,7 +4,7 @@
  * @namespace ko
  */
 ko.msf = (function () {
-    var mStacks = [];       //Array of stacks in the system
+    var mStacks = ko.observableArray([]);       //Array of stacks in the system
 
     /**
    * returns the array of stacks
@@ -12,13 +12,13 @@ ko.msf = (function () {
    * @returns {Array}
    */
     var getStacks = function(){
-        return mStacks;
+        return mStacks();
     };
     /**
      * Cleares all stacks in the system
      */
     var clearStacks = function () {
-        mStacks.forEach(function (stack) {
+        mStacks().forEach(function (stack) {
             stack.reInit();
         });
     };
@@ -26,10 +26,10 @@ ko.msf = (function () {
      * Cleares all stacks in the system
      */
     var purgeStacks = function(){
-        mStacks.forEach(function(stack){
+        mStacks().forEach(function(stack){
             stack.clearForGc();
         });
-        mStacks.length = 0;
+        mStacks.removeAll();
     };
 
     /**
@@ -63,7 +63,7 @@ ko.msf = (function () {
      * @returns {ko.msf.ms}
      */
     var getDefaultStack = function(){
-        return mStacks.length ? mStacks[0] :createStack();
+        return mStacks().length ? mStacks()[0] :createStack();
     };
 
     /**
@@ -71,14 +71,19 @@ ko.msf = (function () {
      * @returns {ko.msf.ms}
      */
     var getLastStack = function () {
-        if (mStacks.length > 0) {
-            return mStacks[mStacks.length - 1];
+        if (mStacks().length > 0) {
+            return mStacks()[mStacks().length - 1];
         }
         else {
             return undefined;
         }
     };
 
+    var isDirty = ko.computed(function () {
+       return mStacks().some(function (mStack){
+           return mStack.isDirty();
+        });
+    });
     //API
     return {
         getStacks: getStacks,
@@ -87,6 +92,7 @@ ko.msf = (function () {
         clearStacks: clearStacks,
         getDefaultStack: getDefaultStack,
         getLastStack:getLastStack,
-        createStack: createStack
+        createStack: createStack,
+        isDirty: isDirty
     };
 })();

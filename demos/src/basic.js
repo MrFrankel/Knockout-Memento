@@ -3,8 +3,25 @@
  */
 'use strict'
 //createing a View Model with the registered observable
+
+var UndoRedoStack= ko.msf.createStack();
+var DrityStack= ko.msf.createStack();
+
 var viewModel = {
-    inputVal:ko.observable(10).extend({registerToMS: null})//extend to regiterToMs sets the observable as an undoable observable, no need to set any attributes on it
+    undoinputVal:ko.observable(10).extend(
+        {
+            registerToMS: {
+                stack:UndoRedoStack
+            }
+        }),
+    dirtInputVal:ko.observable(10).extend(
+        {
+            registerToMS:
+            {
+                stack:DrityStack
+            }
+        })
 }
+
 
 ko.applyBindings(viewModel);
