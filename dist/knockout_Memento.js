@@ -138,6 +138,7 @@ ko.msf.mStack = function (options) {
 
             stack.push(buffer.splice(0));//Push buffer to given stack
             buffer.length = 0;//Purge buffer
+            dirty(true);
         };
 
     /**
@@ -268,7 +269,7 @@ ko.msf.mStack = function (options) {
              return true;
 
          pushBuffer(undoStack, seqBufferArray);
-         dirty(true);
+
 
           return true;
      };
